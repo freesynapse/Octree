@@ -88,6 +88,7 @@
     <ClInclude Include="fonts.h" />
     <ClInclude Include="mainGlobals.h" />
     <ClInclude Include="math3d.h" />
+    <ClInclude Include="octree.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="utility.h" />
     <ClInclude Include="vxtypes.h" />
@@ -97,6 +98,7 @@
     <ClCompile Include="fonts.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="math3d.cpp" />
+    <ClCompile Include="octree.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="utility.cpp" />
   </ItemGroup>

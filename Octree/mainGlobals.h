@@ -8,6 +8,7 @@
 #include "math3d.h"
 #include "fonts.h"
 #include "camera.h"
+#include "octree.h"
 
 #include <random>
 
