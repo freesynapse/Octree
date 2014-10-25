@@ -78,6 +78,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="GLSL\font_fragment.glsl" />
+    <None Include="GLSL\font_vertex.glsl" />
+    <None Include="GLSL\main_fragment.glsl" />
+    <None Include="GLSL\main_vertex.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="fonts.h" />
+    <ClInclude Include="mainGlobals.h" />
+    <ClInclude Include="math3d.h" />
+    <ClInclude Include="shader.h" />
+    <ClInclude Include="utility.h" />
+    <ClInclude Include="vxtypes.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="fonts.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="math3d.cpp" />
+    <ClCompile Include="shader.cpp" />
+    <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
