@@ -69,26 +69,87 @@ Vector3f& Vector3f::Normalize()
 void Vector3f::Print(const char *s)
 {
 	Logw("%s  [ %.1f  %.1f  %.1f ]\n", s, x, y, z);
-
 } // end Vector3f::Print()
 
+
+
+// Vector3t MEMBER FUNCTIONS /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
-glm::fquat AxisAngleToQuaternion(float &angle, Vector3f &axis)
+
+template<typename T>
+Vector3t<T> Vector3t<T>::Cross(const Vector3t<T> &_v) const
 {
-	glm::fquat q;
-	float angle_2 = DEG_TO_RAD(angle) / 2.0f;
-	float sin_angle_2 = sinf(angle_2);
-	
-	q.w = cosf(angle_2);
-	q.x = axis.x * sin_angle_2;
-	q.y = axis.y * sin_angle_2;
-	q.z = axis.z * sin_angle_2;
+	const T _x = y * _v.z - z * _v.y;
+	const T _y = z * _v.x - x * _v.z;
+	const T _z = x * _v.y - y * _v.x;
 
-	q = glm::normalize(q);
+	return (Vector3t<T>(_x, _y, _z));
+}
 
-	return (q);
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+Vector3t<T>	Cross(const Vector3t<T> &_v0, const Vector3t<T> &_v1)
+{
+	const T _x = _v0.y * _v1.z - _v0.z * _v1.y;
+	const T _y = _v0.z * _v1.x - _v0.x * _v1.z;
+	const T _z = _v0.x * _v1.y - _v0.y * _v1.x;
 
-} // end AxisAngleToQuat()
+	return (Vector3t<T>(_x, _y, _z));
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+T Vector3t<T>::Dot(const Vector3t<T> &_v) const
+{
+	return (x * _v.x + y * _v.y + z * _v.z);
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+Vector3t<T> Dot(const Vector3t<T> &_v0, const Vector3t<T> &_v1)
+{
+	return (_v0.x * _v1.x + _v0.y * _v1.y + _v0.z * _v1.z);
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+T Vector3t<T>::Length() const
+{
+	return (sqrt(x * x + y * y + z * z));
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+T Vector3t<T>::Length2() const
+{
+	return (x * x + y * y + z * z);
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+Vector3t<T> &Vector3t<T>::Normalize()
+{
+	const T length = sqrt(x * x + y * y + z * z);
+
+	if (length < EPSILON_E5)
+		return (*this);
+
+	T length_inv = 1.0 / length;
+	x *= length_inv;
+	y *= length_inv;
+	z *= length_inv;
+
+	return (*this);
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+void Vector3t<T>::Print(const char *_s)
+{
+	Logw("%s  [ %.1f  %.1f  %.1f ]\n", s, x, y, z);
+}
+
+
 
 // Matrix4f MEMBER FUNCTIONS /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -209,3 +270,22 @@ void Matrix4f::Print(const char *str)
 
 } // end Matrix4f::Print()
 
+
+
+// Convert axis to quaternion ////////////////////////////////////////////
+glm::fquat AxisAngleToQuaternion(float &angle, Vector3f &axis)
+{
+	glm::fquat q;
+	float angle_2 = DEG_TO_RAD(angle) / 2.0f;
+	float sin_angle_2 = sinf(angle_2);
+
+	q.w = cosf(angle_2);
+	q.x = axis.x * sin_angle_2;
+	q.y = axis.y * sin_angle_2;
+	q.z = axis.z * sin_angle_2;
+
+	q = glm::normalize(q);
+
+	return (q);
+
+} // end AxisAngleToQuat()

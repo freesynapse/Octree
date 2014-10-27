@@ -1,4 +1,4 @@
-OctreeSpheres: 2014-10-27 08:06:57
+OctreeSpheres: 2014-10-27 18:13:56
 
 c_ShaderObject::LoadShader(): Shader 35633 compiled
 c_ShaderObject::LoadShader(): Shader 35632 compiled
@@ -18,8 +18,10 @@ c_ShaderObject::CreateShaderProgram(): Program (6) linked
 c_Font::InitializeAtlas(): FreeType initialization		SUCCESS
 c_Font::InitializeAtlas(): Loading ./fonts/FreeSans.ttf		SUCCESS
 ERROR 1280: c_Font::InitializeAtlas(): glGenVertexArrays: invalid enumerant
-c_Font::InitializeAtlas(): Generated a 769x15 text atlas (11.3 kb) in 8.2477 ms
+c_Font::InitializeAtlas(): Generated a 793x14 text atlas (10.8 kb) in 5.3320 ms
 
+Vector3t<float> = [ 0.0  0.0  1.0 ]
+Vector3t<float> = [ 1.0  1.0  0.0 ]
 
 
 --- CALL: MAIN::KeyboardAsync(): <ESC> recieved, leaving glutMainLoop().
@@ -28,5 +30,5 @@ c_ShaderObject::Release(): program 3; shaders 1, 2		SUCCESS
 c_ShaderObject::Release(): program 6; shaders 4, 5		SUCCESS
 
 
-APPLICATION TERMINATED : 2014-10-27 08:07:01
+APPLICATION TERMINATED : 2014-10-27 18:13:57
 
