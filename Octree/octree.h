@@ -69,9 +69,11 @@ public:
 	c_Octree(AABB3 _aabb, int _level = 0);
 
 	// Accessors
-	c_Octree *GetChild(int _i) { return (m_pChildren[_i]); }
-	AABB3 GetAABB() { return (m_AABB); }
-	int GetLevel() { return (m_iLevel); }
+	c_Octree *GetChild(int _i)				{	return (m_pChildren[_i]);	}
+	void SetChild(int _i, c_Octree *_tree)	{	m_pChildren[_i] = _tree;	}
+	AABB3 GetAABB()							{	return (m_AABB);			}
+	int GetLevel()							{	return (m_iLevel);			}
+	void AddVector(Vector3t<double> _v)		{	m_vVertices.push_back(_v);	}
 
 	// Member functions
 	bool Insert(c_Octree *_root, Vector3t<double> _v);
@@ -87,6 +89,7 @@ private:
 	c_Octree *m_pChildren[8];
 	AABB3 m_AABB;
 	int m_iLevel;
+	bool m_bContainsVertex;
 
 	std::vector<Vector3t<double> > m_vVertices;
 
