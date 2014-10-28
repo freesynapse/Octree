@@ -75,6 +75,35 @@ struct Vector3f
 	
 };
 
+// Template, type dependent 3D vector ....................................
+template<typename T>
+struct Vector3t
+{
+	T x, y, z;
+
+	// CONSTRUCTORS
+	Vector3t() : x(0.0), y(0.0), z(0.0) {}
+	Vector3t(T _x, T _y, T _z) : x(_x), y(_y), z(_z) {}
+
+	// OPERATORS
+	Vector3t &operator+=(const Vector3t &_v)	{	x += _v.x;	y += _v.y;	z += _v.z;	return (*this);	}
+	Vector3t &operator-=(const Vector3t &_v)	{	x -= _v.x;	y -= _v.y;	z -= _v.z;	return (*this); }
+	Vector3t &operator*=(T _t)					{	x *= _t;	y *= _t;	z *= _t;	return (*this); }
+
+	Vector3t operator+(const Vector3t &_v)		{	return (Vector3f(x + _v.x, y + _v.y, z + _v.z));	}
+	Vector3t operator-(const Vector3t &_v)		{	return (Vector3f(x - _v.x, y - _v.y, z - _v.z));	}
+
+	// Member functions
+	Vector3t<T> Cross(const Vector3t<T> &_v) const;
+	T Dot(const Vector3t<T> &_v) const;
+	T Length() const;
+	T Length2() const;
+	Vector3t<T> &Normalize();
+
+	void Print(const char *_s);
+
+};
+
 // 2D vector (float) .....................................................
 struct Vector2f
 {
@@ -171,6 +200,12 @@ public:
 
 Vector3f	Cross					(const Vector3f &v0, const Vector3f &v1);
 float		Dot						(const Vector3f &v0, const Vector3f &v1);
+
+template<typename T>
+Vector3t<T>	Cross					(const Vector3t<T> &_v0, const Vector3t<T> &_v1);
+template<typename T>
+Vector3t<T> Dot						(const Vector3t<T> &_v0, const Vector3t<T> &_v1);
+
 glm::fquat	AxisAngleToQuaternion	(float &angle, Vector3f &axis);
 
 

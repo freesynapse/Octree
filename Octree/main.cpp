@@ -157,6 +157,13 @@ void Release()
 // SetupGeometry .........................................................
 void SetupGeometry()
 {
+	// OCTREE TESTS //
+
+	// test of Vector3t<float> and <double>
+	Vector3t<float> v = Vector3t<float>(0.0f, 0.0f, 1.0f);
+	Logw("Vector3t<float> = [ %.1f  %.1f  %.1f ]\n", v.x, v.y, v.z);
+	v += Vector3t<float>(1.0f, 1.0f, -1.0f);
+	Logw("Vector3t<float> = [ %.1f  %.1f  %.1f ]\n", v.x, v.y, v.z);
 
 	// Setup the vertex data for rendering of the nodes
 	std::vector<Vector2d> vNodes;
