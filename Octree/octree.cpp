@@ -35,6 +35,8 @@ bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 			_root->Insert(_root->GetChild(_root->GetChildIndex(_root, _v)), _v);
 
 		_root->ClearVertices();
+		
+		return (true);
 	}
 	else
 	{
@@ -43,7 +45,10 @@ bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 		//	2. there is still room for more vertices in this node
 		_root->AddVector(_v);
 
+		return (true);
 	}
+
+	return (false);
 
 } // end c_Octree::Insert()
 
