@@ -6,10 +6,9 @@
 
 // CONSTRUCTOR ///////////////////////////////////////////////////////////
 
-c_Octree::c_Octree(AABB3 _aabb, int _level = 0)
+c_Octree::c_Octree(AABB3 _aabb, int _level)
 {
-	for (int i = 0; i < 8; i++)
-		m_pChildren[i] = NULL;
+	memset(m_pChildren, 0, sizeof(m_pChildren));
 
 	m_AABB = _aabb;
 	m_iLevel = _level;
@@ -24,10 +23,27 @@ c_Octree::c_Octree(AABB3 _aabb, int _level = 0)
 
 bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 {
-	if (!_root->GetAABB().ContainsPoint(_v) || _root->GetLevel() > OCTREE_MAX_DEPTH)
+	if (/*!_root->GetAABB().ContainsPoint(_v) || */_root->GetLevel() > OCTREE_MAX_DEPTH)
 		return (false);
 
-	_root->AddVector(_v);
+	if (_root->GetVertices().size() == OCTREE_MAX_NODE_VERTICES &&
+		_root->GetLevel() != OCTREE_MAX_DEPTH)
+	{
+		_root->Split(_root);
+
+		for (size_t i = 0; i < _root->GetVertices().size(); i++)
+			_root->Insert(_root->GetChild(_root->GetChildIndex(_root, _v)), _v);
+
+		_root->ClearVertices();
+	}
+	else
+	{
+		// ended up here if
+		//	1. we reached max depth
+		//	2. there is still room for more vertices in this node
+		_root->AddVector(_v);
+
+	}
 
 } // end c_Octree::Insert()
 
@@ -49,13 +65,31 @@ void c_Octree::Split(c_Octree *_root)
 } // end c_Octree::Split()
 
 //////////////////////////////////////////////////////////////////////////
-void c_Octree::Clear(c_Octree *_root)
+int c_Octree::GetChildIndex(c_Octree *_root, Vector3t<double> _v)
+{
+	AABB3 aabb = _root->GetAABB();
+	Vector3t<double> half = aabb.HalfAABB();
+
+	int index = 0;
+
+	bool right = _v.x > half.x;
+	bool top = _v.y > half.y;
+	bool back = _v.z > half.z;
+
+	index = right + (top << 1) + (back << 2);
+	
+	return (index);
+	
+} // end c_Octree::GetChildIndex()
+
+//////////////////////////////////////////////////////////////////////////
+void c_Octree::DestroyTree(c_Octree *_root)
 {
 	if (_root == NULL)
 		return;
 
 	for (int i = 0; i < 8; i++)
-		_root->Clear(GetChild(i));
+		_root->DestroyTree(_root->GetChild(i));
 
 	delete _root;
 	_root = NULL;

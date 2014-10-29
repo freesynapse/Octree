@@ -16,6 +16,7 @@
 // Definitions ...........................................................
 #define SCREEN_WIDTH				800
 #define SCREEN_HEIGHT				600
+#define APP_FULLSCREEN				1
 
 
 // Function prototypes ...................................................
@@ -91,6 +92,8 @@ int iHalfScreenX = SCREEN_WIDTH / 2,
 bool bWireframeState = false;
 bool bCullState = true;
 int frame;
+
+Vector2t<int> vWindowDimensions;
 
 
 
