@@ -26,14 +26,17 @@ bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 	if (/*!_root->GetAABB().ContainsPoint(_v) || */_root->GetLevel() > OCTREE_MAX_DEPTH)
 		return (false);
 
-	if (_root->GetVertices().size() == OCTREE_MAX_NODE_VERTICES &&
+	if (_root->GetVertices().size() >= OCTREE_MAX_NODE_VERTICES &&
 		_root->GetLevel() != OCTREE_MAX_DEPTH)
 	{
 		_root->Split(_root);
 
-		for (size_t i = 0; i < _root->GetVertices().size(); i++)
-			_root->Insert(_root->GetChild(_root->GetChildIndex(_root, _v)), _v);
+		std::vector<Vector3t<double> > vertices = _root->GetVertices();
 
+		for (size_t i = 0; i < _root->GetVertices().size(); i++)
+			//_root->Insert(_root->GetChild(_root->GetChildIndex(_root, _v)), _v);	// fel!!!
+			_root->Insert(_root->GetChild(_root->GetChildIndex(_root, vertices[i])), vertices[i]);
+			
 		_root->ClearVertices();
 		
 		return (true);
@@ -75,6 +78,7 @@ int c_Octree::GetChildIndex(c_Octree *_root, Vector3t<double> _v)
 	AABB3 aabb = _root->GetAABB();
 	Vector3t<double> half = aabb.HalfAABB();
 
+	/*
 	int index = 0;
 
 	bool right = _v.x > half.x;
@@ -82,8 +86,9 @@ int c_Octree::GetChildIndex(c_Octree *_root, Vector3t<double> _v)
 	bool back = _v.z > half.z;
 
 	index = right + (top << 1) + (back << 2);
-	
-	return (index);
+	*/
+
+	return ((_v.x > half.x) + ((_v.y > half.y) << 1) + ((_v.z > half.z) << 2));
 	
 } // end c_Octree::GetChildIndex()
 
