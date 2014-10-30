@@ -36,7 +36,7 @@ void c_Octree::Split(c_Octree *_root)
 {
 	AABB3 aabb = _root->GetAABB();
 	Vector3t<double> half = aabb.HalfAABB();
-
+	
 	_root->SetChild(0, new c_Octree(AABB3(aabb.v0.x, half.x, aabb.v0.y, half.y, aabb.v0.z, half.z), _root->GetLevel() + 1));
 	_root->SetChild(1, new c_Octree(AABB3(half.x, aabb.v1.x, aabb.v0.y, half.y, aabb.v0.z, half.z), _root->GetLevel() + 1));
 	_root->SetChild(2, new c_Octree(AABB3(aabb.v0.x, half.x, half.y, aabb.v1.y, aabb.v0.z, half.z), _root->GetLevel() + 1));
