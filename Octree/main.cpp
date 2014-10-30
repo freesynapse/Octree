@@ -147,6 +147,9 @@ void Release()
 	if (pCamera)
 		delete pCamera;
 
+	if (pTree)
+		pTree->DestroyTree(pTree);
+
 	glDeleteBuffers(1, &vboNodePositions);
 
 	CloseLogFile();
@@ -159,11 +162,11 @@ void SetupGeometry()
 {
 	// OCTREE TESTS //
 
-	// test of Vector3t<float> and <double>
-	Vector3t<float> v = Vector3t<float>(0.0f, 0.0f, 1.0f);
-	Logw("Vector3t<float> = [ %.1f  %.1f  %.1f ]\n", v.x, v.y, v.z);
-	v += Vector3t<float>(1.0f, 1.0f, -1.0f);
-	Logw("Vector3t<float> = [ %.1f  %.1f  %.1f ]\n", v.x, v.y, v.z);
+	pTree = new c_Octree(AABB3(Vector3t<double>(-50.0, -50.0, 50.0), Vector3t<double>(50.0, 50.0, 50.0)));
+	
+	std::vector<Line3> vLines;
+	pTree->LinesAABB(pTree, &vLines);
+	nLines = (int)vLines.size();
 
 	// Setup the vertex data for rendering of the nodes
 	std::vector<Vector2d> vNodes;
@@ -219,7 +222,7 @@ void SetupGeometry()
 		Logw("ERROR %d: glGenBuffers vboLines: %s\n", res, gluErrorString(res));
 
 	glBindBuffer(GL_ARRAY_BUFFER, vboLines);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vector2d) * nLines * 2, NULL, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vector2d) * nLines * 2, &vLines[0], GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(attributePositions);
 	glVertexAttribPointer(attributePositions, 2, GL_DOUBLE, GL_FALSE, 0, BUFFER_OFFSET(0));
@@ -303,7 +306,7 @@ void Render()
 	glDrawArrays(GL_POINTS, 0, nNodes);
 
 	// Render AABB lines
-	glUniform3fv(uniformColor, 1, (const GLfloat *)&Vector3f(0.0f, 0.0f, 0.0f));
+	glUniform3fv(uniformColor, 1, (const GLfloat *)&Vector3f(1.0f, 1.0f, 0.0f));
 
 	glBindVertexArray(vaoLines);
 	glEnableVertexAttribArray(attributePositions);
@@ -332,6 +335,7 @@ void Render()
 	pFont->RenderString_ss(2, y += font_height, "heading: %.1f    elevation: %.1f", pCamera->Heading(), pCamera->Elevation());
 
 	pFont->RenderString_ss(2, y += font_height * 2, "points: %d", nNodes);
+	pFont->RenderString_ss(2, y += font_height, "lines: %d", nLines);
 	pFont->RenderString_ss(2, y += font_height, "rotation angle: %.0f deg", fTheta);
 
 	pFont->RenderString_ss(2, y += font_height * 2, "Tree levels: %d", nTreeLevels);
@@ -441,7 +445,7 @@ int main(int argc, char *argv[])
 
 	// initialize font atlas 
 	pFont = new c_Font("./fonts/FreeSans.ttf", 14, FONT_CREATE_SHADERS);
-	pFont->SetColor(&rgba4f(1.0f, 1.0f, 0.0f, 1.0f));
+	pFont->SetColor(&rgba4f(1.0f, 1.0f, 1.0f, 1.0f));
 
 	// initialise camera
 	pCamera = new c_Camera(main_program);

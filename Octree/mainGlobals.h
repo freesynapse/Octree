@@ -68,6 +68,9 @@ GLuint vaoNodes,
 int nNodes = 4000;
 int nLines = 0;
 
+// octree
+c_Octree *pTree;
+
 Matrix4f mModelMatrix;
 Matrix4f mViewMatrix;
 Matrix4f mProjectionMatrix;

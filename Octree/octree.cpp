@@ -26,6 +26,9 @@ bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 	if (/*!_root->GetAABB().ContainsPoint(_v) || */_root->GetLevel() > OCTREE_MAX_DEPTH)
 		return (false);
 
+	// this node (or its children continas vertices)
+	_root->SetContainsVertex(true);
+
 	if (_root->GetVertices().size() >= OCTREE_MAX_NODE_VERTICES &&
 		_root->GetLevel() != OCTREE_MAX_DEPTH)
 	{
@@ -123,6 +126,36 @@ int c_Octree::TreeDepth(c_Octree *_root)
 //////////////////////////////////////////////////////////////////////////
 void c_Octree::LinesAABB(c_Octree *_root, std::vector<Line3> *_vlines)
 {
+	if (_root == NULL)
+		return;
+
+	if ((_root->GetLevel() > 0 && _root->ContainsVertex()) || _root->GetLevel() == 0)
+	{
+		AABB3 aabb = _root->GetAABB();
+
+		// X lines
+		_vlines->push_back(Line3(Vector3t<double>(aabb.v0.x, aabb.v0.y, aabb.v0.z), Vector3t<double>(aabb.v1.x, aabb.v0.y, aabb.v0.z)));
+		_vlines->push_back(Line3(Vector3t<double>(aabb.v0.x, aabb.v1.y, aabb.v0.z), Vector3t<double>(aabb.v1.x, aabb.v1.y, aabb.v0.z)));
+		_vlines->push_back(Line3(Vector3t<double>(aabb.v0.x, aabb.v0.y, aabb.v1.z), Vector3t<double>(aabb.v1.x, aabb.v0.y, aabb.v1.z)));
+		_vlines->push_back(Line3(Vector3t<double>(aabb.v0.x, aabb.v1.y, aabb.v1.z), Vector3t<double>(aabb.v1.x, aabb.v1.y, aabb.v1.z)));
+
+		// Y lines
+		_vlines->push_back(Line3(Vector3t<double>(aabb.v0.x, aabb.v0.y, aabb.v0.z), Vector3t<double>(aabb.v0.x, aabb.v1.y, aabb.v0.z)));
+		_vlines->push_back(Line3(Vector3t<double>(aabb.v1.x, aabb.v0.y, aabb.v0.z), Vector3t<double>(aabb.v1.x, aabb.v1.y, aabb.v0.z)));
+		_vlines->push_back(Line3(Vector3t<double>(aabb.v0.x, aabb.v0.y, aabb.v1.z), Vector3t<double>(aabb.v0.x, aabb.v1.y, aabb.v1.z)));
+		_vlines->push_back(Line3(Vector3t<double>(aabb.v1.x, aabb.v0.y, aabb.v1.z), Vector3t<double>(aabb.v1.x, aabb.v1.y, aabb.v1.z)));
+
+		// Z lines
+		_vlines->push_back(Line3(Vector3t<double>(aabb.v0.x, aabb.v0.y, aabb.v0.z), Vector3t<double>(aabb.v0.x, aabb.v0.y, aabb.v1.z)));
+		_vlines->push_back(Line3(Vector3t<double>(aabb.v1.x, aabb.v0.y, aabb.v0.z), Vector3t<double>(aabb.v1.x, aabb.v0.y, aabb.v1.z)));
+		_vlines->push_back(Line3(Vector3t<double>(aabb.v0.x, aabb.v1.y, aabb.v0.z), Vector3t<double>(aabb.v0.x, aabb.v1.y, aabb.v1.z)));
+		_vlines->push_back(Line3(Vector3t<double>(aabb.v1.x, aabb.v1.y, aabb.v0.z), Vector3t<double>(aabb.v1.x, aabb.v1.y, aabb.v1.z)));
+
+	}
+
+	for (int i = 0; i < 8; i++)
+		_root->LinesAABB(_root->GetChild(i), _vlines);
+
 
 } // end c_Octree::LinesAABB()
 

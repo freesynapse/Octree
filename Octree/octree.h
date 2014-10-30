@@ -77,6 +77,8 @@ public:
 	void AddVector(Vector3t<double> _v)				{	m_vVertices.push_back(_v);	}
 	std::vector<Vector3t<double> > &GetVertices()	{	return (m_vVertices);		}
 	void ClearVertices()							{	m_vVertices.clear();		}
+	bool ContainsVertex()							{	return (m_bContainsVertex); }
+	void SetContainsVertex(bool _b)					{	m_bContainsVertex = _b;		}
 
 	// Member functions
 	bool Insert(c_Octree *_root, Vector3t<double> _v);
@@ -86,7 +88,6 @@ public:
 	int TreeDepth(c_Octree *_root);
 
 	void LinesAABB(c_Octree *_root, std::vector<Line3> *_vlines);
-
 	void Print(c_Octree *_root);
 
 private:
