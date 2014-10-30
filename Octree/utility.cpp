@@ -192,6 +192,7 @@ double WaitCounter(double _time)
 } // end WaitCounter()
 
 
+
 // WINAPI UTILITY FUNCTIONS //////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
@@ -207,6 +208,17 @@ TCHAR *CStrToTCHAR(char *_str)
 	return (tStr);
 
 } // end CharToTCHAR()
+
+//////////////////////////////////////////////////////////////////////////
+Vector2t<int> WindowsDimensions()
+{
+	RECT rDesktop;
+	const HWND hDesktop = GetDesktopWindow();
+	GetWindowRect(hDesktop, &rDesktop);
+
+	return (Vector2t<int>(rDesktop.right, rDesktop.bottom));
+
+} // end WindowsDimensions()
 
 //////////////////////////////////////////////////////////////////////////
 __int64	FileSize(const char *_filename)

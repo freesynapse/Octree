@@ -12,6 +12,7 @@
 // DEFINITIONS / MACROS //////////////////////////////////////////////////
 
 #define OCTREE_MAX_DEPTH				7
+#define OCTREE_MAX_NODE_VERTICES		64
 
 
 
@@ -69,20 +70,24 @@ public:
 	c_Octree(AABB3 _aabb, int _level = 0);
 
 	// Accessors
-	c_Octree *GetChild(int _i)				{	return (m_pChildren[_i]);	}
-	void SetChild(int _i, c_Octree *_tree)	{	m_pChildren[_i] = _tree;	}
-	AABB3 GetAABB()							{	return (m_AABB);			}
-	int GetLevel()							{	return (m_iLevel);			}
-	void AddVector(Vector3t<double> _v)		{	m_vVertices.push_back(_v);	}
+	c_Octree *GetChild(int _i)						{	return (m_pChildren[_i]);	}
+	void SetChild(int _i, c_Octree *_tree)			{	m_pChildren[_i] = _tree;	}
+	AABB3 GetAABB()									{	return (m_AABB);			}
+	int GetLevel()									{	return (m_iLevel);			}
+	void AddVector(Vector3t<double> _v)				{	m_vVertices.push_back(_v);	}
+	std::vector<Vector3t<double> > &GetVertices()	{	return (m_vVertices);		}
+	void ClearVertices()							{	m_vVertices.clear();		}
+	bool ContainsVertex()							{	return (m_bContainsVertex); }
+	void SetContainsVertex(bool _b)					{	m_bContainsVertex = _b;		}
 
 	// Member functions
 	bool Insert(c_Octree *_root, Vector3t<double> _v);
 	void Split(c_Octree *_root);
-	void Clear(c_Octree *_root);
+	int GetChildIndex(c_Octree *_root, Vector3t<double> _v);
+	void DestroyTree(c_Octree *_root);
 	int TreeDepth(c_Octree *_root);
 
 	void LinesAABB(c_Octree *_root, std::vector<Line3> *_vlines);
-
 	void Print(c_Octree *_root);
 
 private:

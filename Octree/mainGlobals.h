@@ -16,6 +16,7 @@
 // Definitions ...........................................................
 #define SCREEN_WIDTH				800
 #define SCREEN_HEIGHT				600
+#define APP_FULLSCREEN				1
 
 
 // Function prototypes ...................................................
@@ -67,6 +68,9 @@ GLuint vaoNodes,
 int nNodes = 4000;
 int nLines = 0;
 
+// octree
+c_Octree *pTree;
+
 Matrix4f mModelMatrix;
 Matrix4f mViewMatrix;
 Matrix4f mProjectionMatrix;
@@ -91,6 +95,8 @@ int iHalfScreenX = SCREEN_WIDTH / 2,
 bool bWireframeState = false;
 bool bCullState = true;
 int frame;
+
+Vector2t<int> vWindowDimensions;
 
 
 

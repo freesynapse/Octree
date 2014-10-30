@@ -142,6 +142,27 @@ struct Vector2d
 	Vector2d operator+(const Vector2d &v)	{ return (Vector2d(x + v.x, y + v.y)); }
 };
 
+// Template, type dependent 2D vector ....................................
+template<typename T>
+struct Vector2t
+{
+	T x, y;
+
+	// Constructors
+	Vector2t() : x(0), y(0) {}
+	Vector2t(T _x, T _y) : x(_x), y(_y) {}
+
+	// Operators
+	Vector2t& operator+=(const Vector2t& r)	{ x += r.x;	y += r.y;	return (*this);	}
+	Vector2t& operator+=(T d)				{ x += d;	y += d;		return (*this); }
+	Vector2t& operator-=(const Vector2t& r)	{ x -= r.x;	y -= r.y;	return (*this); }
+	Vector2t& operator*=(T d)				{ x *= d;	y *= d;		return (*this); }
+
+	Vector2t& operator*(T d)				{ x *= d;	y *= d;		return (*this); }
+	Vector2t operator+(const Vector2t &v)	{ return (Vector2t(x + v.x, y + v.y));	}
+
+};
+
 
 // CLASSES ///////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
