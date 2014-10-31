@@ -162,11 +162,19 @@ void SetupGeometry()
 {
 	// OCTREE TESTS //
 
-	pTree = new c_Octree(AABB3(Vector3t<double>(-50.0, -50.0, 50.0), Vector3t<double>(50.0, 50.0, 50.0)));
+	pTree = new c_Octree(AABB3(Vector3t<double>(-50.0, -50.0, -50.0), Vector3t<double>(50.0, 50.0, 50.0)));
 	
 	std::vector<Line3> vLines;
 	pTree->LinesAABB(pTree, &vLines);
 	nLines = (int)vLines.size();
+
+	Logw("LINES:\n");
+	for (size_t i = 0; i < vLines.size(); i++)
+	{
+		Line3 l = vLines[i];
+		Logw("[ %.1f  %.1f  %.1f ] --> [ %.1f  %.1f  %.1f ]\n",
+			l.v0.x, l.v0.y, l.v0.z, l.v1.x, l.v1.y, l.v1.z);
+	}
 
 	// Setup the vertex data for rendering of the nodes
 	std::vector<Vector2d> vNodes;
@@ -222,10 +230,10 @@ void SetupGeometry()
 		Logw("ERROR %d: glGenBuffers vboLines: %s\n", res, gluErrorString(res));
 
 	glBindBuffer(GL_ARRAY_BUFFER, vboLines);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vector2d) * nLines * 2, &vLines[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Line3) * nLines, &vLines[0], GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(attributePositions);
-	glVertexAttribPointer(attributePositions, 2, GL_DOUBLE, GL_FALSE, 0, BUFFER_OFFSET(0));
+	glVertexAttribPointer(attributePositions, 3, GL_DOUBLE, GL_FALSE, 0, BUFFER_OFFSET(0));
 
 	// Unbind the vertex array object
 	glDisableVertexAttribArray(attributePositions);
@@ -311,7 +319,7 @@ void Render()
 	glBindVertexArray(vaoLines);
 	glEnableVertexAttribArray(attributePositions);
 
-	glDrawArrays(GL_LINES, 0, nLines * 2);
+	glDrawArrays(GL_LINES, 0, 36);
 	
 	
 	// 2D RENDERING ////////////////////////////////////////////
