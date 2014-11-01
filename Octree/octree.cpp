@@ -15,9 +15,6 @@ c_Octree::c_Octree(AABB3 _aabb, int _level)
 	m_bContainsVertex = false;
 	m_vVertices.clear();
 
-	Logw("v0 [ %.1f  %.1f  %.1f]   v1 [ %.1f  %.1f  %.1f ]\n",
-		_aabb.v0.x, _aabb.v0.y, _aabb.v0.z, _aabb.v1.x, _aabb.v1.y, _aabb.v1.z);
-
 } // end c_Octree::c_Octree()
 
 
@@ -36,7 +33,7 @@ bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 		_root->GetLevel() != OCTREE_MAX_DEPTH)
 	{
 		_root->Split(_root);
-
+		
 		std::vector<Vector3t<double> > vertices = _root->GetVertices();
 
 		for (size_t i = 0; i < _root->GetVertices().size(); i++)
@@ -66,7 +63,10 @@ void c_Octree::Split(c_Octree *_root)
 {
 	AABB3 aabb = _root->GetAABB();
 	Vector3t<double> half = aabb.HalfAABB();
-	
+
+	//Logw("SPLIT(): \tv0[ %.1f  %.1f  %.1f]   v1[ %.1f  %.1f  %.1f ]\n",
+	//	aabb.v0.x, aabb.v0.y, aabb.v0.z, aabb.v1.x, aabb.v1.y, aabb.v1.z);
+
 	_root->SetChild(0, new c_Octree(AABB3(aabb.v0.x, half.x, aabb.v0.y, half.y, aabb.v0.z, half.z), _root->GetLevel() + 1));
 	_root->SetChild(1, new c_Octree(AABB3(half.x, aabb.v1.x, aabb.v0.y, half.y, aabb.v0.z, half.z), _root->GetLevel() + 1));
 	_root->SetChild(2, new c_Octree(AABB3(aabb.v0.x, half.x, half.y, aabb.v1.y, aabb.v0.z, half.z), _root->GetLevel() + 1));
@@ -165,6 +165,15 @@ void c_Octree::LinesAABB(c_Octree *_root, std::vector<Line3> *_vlines)
 //////////////////////////////////////////////////////////////////////////
 void c_Octree::Print(c_Octree *_root)
 {
+	if (_root == NULL)
+		return;
+
+	for (int i = 0; i < 8; i++)
+		_root->Print(_root->GetChild(i));
+	
+	AABB3 aabb = _root->GetAABB();
+	Logw("level = %d\tv0[ %.1f  %.1f  %.1f]   v1[ %.1f  %.1f  %.1f ]\tnodes = %s\n",
+		_root->GetLevel(), aabb.v0.x, aabb.v0.y, aabb.v0.z, aabb.v1.x, aabb.v1.y, aabb.v1.z, _root->ContainsVertex() ? "TRUE" : "FALSE");
 
 } // end c_Octree::Print()
 

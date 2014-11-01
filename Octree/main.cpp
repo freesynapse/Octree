@@ -160,28 +160,31 @@ void Release()
 // SetupGeometry .........................................................
 void SetupGeometry()
 {
+
+	// Setup the vertex data for rendering of the nodes
+	std::vector<Vector3t<double> > vNodes;
+	vNodes.resize(nNodes);
+	srand((unsigned int)time(NULL));
+	for (int i = 0; i < nNodes; i++)
+		vNodes[i] = Vector3t<double>((double)(rand() % 10000 / 100.0 - 50.0), (double)(rand() % 10000 / 100.0 - 50.0), (double)(rand() % 10000 / 100.0 - 50.0));
+
+	
 	// OCTREE TESTS //
 
 	pTree = new c_Octree(AABB3(Vector3t<double>(-50.0, -50.0, -50.0), Vector3t<double>(50.0, 50.0, 50.0)));
-	
+	for (int i = 0; i < nNodes; i++)
+		pTree->Insert(pTree, vNodes[i]);
+
 	std::vector<Line3> vLines;
 	pTree->LinesAABB(pTree, &vLines);
 	nLines = (int)vLines.size();
 
-	Logw("LINES:\n");
-	for (size_t i = 0; i < vLines.size(); i++)
-	{
-		Line3 l = vLines[i];
-		Logw("[ %.1f  %.1f  %.1f ] --> [ %.1f  %.1f  %.1f ]\n",
-			l.v0.x, l.v0.y, l.v0.z, l.v1.x, l.v1.y, l.v1.z);
-	}
+	Logw("\n");
+	pTree->Print(pTree);
 
-	// Setup the vertex data for rendering of the nodes
-	std::vector<Vector2d> vNodes;
-	vNodes.resize(nNodes);
-	srand((unsigned int)time(NULL));
-	for (int i = 0; i < nNodes; i++)
-		vNodes[i] = Vector2d((double)(rand() % 10000 / 100.0 - 50.0), (double)(rand() % 10000 / 100.0 - 50.0));
+
+	// END: OCTREE TESTS //
+
 
 
 	// Setup the vertex array object for rendering the nodes
@@ -202,10 +205,10 @@ void SetupGeometry()
 		Logw("ERROR %d: glGenBuffers vboNodePositions: %s\n", res, gluErrorString(res));
 
 	glBindBuffer(GL_ARRAY_BUFFER, vboNodePositions);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vector2d) * nNodes, &vNodes[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vector3t<double>) * nNodes, &vNodes[0], GL_STATIC_DRAW);
 	
 	glEnableVertexAttribArray(attributePositions);
-	glVertexAttribPointer(attributePositions, 2, GL_DOUBLE, GL_FALSE, 0, BUFFER_OFFSET(0));
+	glVertexAttribPointer(attributePositions, 3, GL_DOUBLE, GL_FALSE, 0, BUFFER_OFFSET(0));
 
 	// Unbind the vertex array object
 	glDisableVertexAttribArray(attributePositions);
@@ -319,7 +322,7 @@ void Render()
 	glBindVertexArray(vaoLines);
 	glEnableVertexAttribArray(attributePositions);
 
-	glDrawArrays(GL_LINES, 0, 36);
+	glDrawArrays(GL_LINES, 0, nLines * 2);
 	
 	
 	// 2D RENDERING ////////////////////////////////////////////

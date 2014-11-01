@@ -39,7 +39,8 @@ struct AABB3
 		v0(_v0), v1(_v1) {}
 	AABB3(double _x0, double _x1, double _y0, double _y1, double _z0, double _z1)
 	{
-		AABB3(Vector3t<double>(_x0, _y0, _z0), Vector3t<double>(_x1, _y1, _z1));
+		v0 = Vector3t<double>(_x0, _y0, _z0);
+		v1 = Vector3t<double>(_x1, _y1, _z1);
 	}
 
 	bool ContainsPoint(Vector3t<double> _v)
@@ -55,7 +56,7 @@ struct AABB3
 		h[0] = v0.x + ((v1.x - v0.x) / 2.0);
 		h[1] = v0.y + ((v1.y - v0.y) / 2.0);
 		h[2] = v0.z + ((v1.z - v0.z) / 2.0);
-		
+
 		return (Vector3t<double>(h[0], h[1], h[2]));
 	}
 
