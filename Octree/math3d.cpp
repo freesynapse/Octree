@@ -5,7 +5,7 @@
 
 // Vector3f MEMBER FUNCTIONS /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
-
+/*
 Vector3f Vector3f::Cross(const Vector3f &v) const
 {
     const float _x = y * v.z - z * v.y;
@@ -70,7 +70,7 @@ void Vector3f::Print(const char *s)
 {
 	Logw("%s  [ %.1f  %.1f  %.1f ]\n", s, x, y, z);
 } // end Vector3f::Print()
-
+*/
 
 
 // Vector3t MEMBER FUNCTIONS /////////////////////////////////////////////

@@ -47,6 +47,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 // 3D vector (float) .....................................................
+/*
 struct Vector3f
 {
 	float x, y, z;
@@ -74,6 +75,7 @@ struct Vector3f
 	void Print(const char *s);
 	
 };
+*/
 
 // Template, type dependent 3D vector ....................................
 template<typename T>
@@ -92,6 +94,7 @@ struct Vector3t
 
 	Vector3t operator+(const Vector3t &_v)		{	return (Vector3f(x + _v.x, y + _v.y, z + _v.z));	}
 	Vector3t operator-(const Vector3t &_v)		{	return (Vector3f(x - _v.x, y - _v.y, z - _v.z));	}
+	Vector3t operator*(const T _t)				{	x *= _t;	y *= _t;	z *= _t;	return (*this); }
 
 	// Member functions
 	Vector3t<T> Cross(const Vector3t<T> &_v) const;
@@ -104,43 +107,13 @@ struct Vector3t
 
 };
 
-// 2D vector (float) .....................................................
-struct Vector2f
-{
-	float x, y;
 
-	// Constructors
-	Vector2f() : x(0.0f), y(0.0f) {};
-	Vector2f(float _x, float _y) : x(_x), y(_y) {};
+// Some basic type definitions of 3D vector types
+typedef Vector3t<float> Vector3f;
+typedef Vector3t<double> Vector3d;
+typedef Vector3t<int> Vector3i;
 
-	// Operators
-	Vector2f& operator+=(const Vector2f& r)	{ x += r.x;	y += r.y;	return *this; }
-	Vector2f& operator+=(float f)			{ x += f;	y += f;		return *this; }
-	Vector2f& operator-=(const Vector2f& r)	{ x -= r.x;	y -= r.y;	return *this; }
-	Vector2f& operator*=(float f)			{ x *= f;	y *= f;		return *this; }
 
-	Vector2f& operator*(float f)			{ x *= f;	y *= f;		return *this; }
-	Vector2f operator+(const Vector2f &v)	{ return (Vector2f(x + v.x, y + v.y)); }
-};
-
-// 2D vector (double) .....................................................
-struct Vector2d
-{
-	double x, y;
-
-	// Constructors
-	Vector2d() : x(0.0), y(0.0) {};
-	Vector2d(double _x, double _y) : x(_x), y(_y) {};
-
-	// Operators
-	Vector2d& operator+=(const Vector2d& r)	{ x += r.x;	y += r.y;	return *this; }
-	Vector2d& operator+=(double d)			{ x += d;	y += d;		return *this; }
-	Vector2d& operator-=(const Vector2d& r)	{ x -= r.x;	y -= r.y;	return *this; }
-	Vector2d& operator*=(double d)			{ x *= d;	y *= d;		return *this; }
-
-	Vector2d& operator*(double d)			{ x *= d;	y *= d;		return *this; }
-	Vector2d operator+(const Vector2d &v)	{ return (Vector2d(x + v.x, y + v.y)); }
-};
 
 // Template, type dependent 2D vector ....................................
 template<typename T>
@@ -162,6 +135,12 @@ struct Vector2t
 	Vector2t operator+(const Vector2t &v)	{ return (Vector2t(x + v.x, y + v.y));	}
 
 };
+
+// Some basic type definitions of 2D vector types
+typedef Vector2t<float> Vector2f;
+typedef Vector2t<double> Vector2d;
+typedef Vector2t<int> Vector2i;
+
 
 
 // CLASSES ///////////////////////////////////////////////////////////////
@@ -219,8 +198,8 @@ public:
 // FUNCTION PROTOTYPES ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-Vector3f	Cross					(const Vector3f &v0, const Vector3f &v1);
-float		Dot						(const Vector3f &v0, const Vector3f &v1);
+//Vector3f	Cross					(const Vector3f &v0, const Vector3f &v1);
+//float		Dot						(const Vector3f &v0, const Vector3f &v1);
 
 template<typename T>
 Vector3t<T>	Cross					(const Vector3t<T> &_v0, const Vector3t<T> &_v1);

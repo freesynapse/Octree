@@ -90,6 +90,7 @@
     <ClInclude Include="fonts.h" />
     <ClInclude Include="mainGlobals.h" />
     <ClInclude Include="math3d.h" />
+    <ClInclude Include="object.h" />
     <ClInclude Include="octree.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="utility.h" />
@@ -100,6 +101,7 @@
     <ClCompile Include="fonts.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="math3d.cpp" />
+    <ClCompile Include="object.cpp" />
     <ClCompile Include="octree.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="utility.cpp" />
