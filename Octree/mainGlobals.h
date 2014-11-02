@@ -65,7 +65,7 @@ GLuint vaoNodes,
 	   vboNodePositions,
 	   vaoLines,
 	   vboLines;
-int nNodes = 100;
+int nNodes = 10000;
 int nLines = 0;
 
 // octree

@@ -47,6 +47,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 // 3D vector (float) .....................................................
+/*
 struct Vector3f
 {
 	float x, y, z;
@@ -74,6 +75,7 @@ struct Vector3f
 	void Print(const char *s);
 	
 };
+*/
 
 // Template, type dependent 3D vector ....................................
 template<typename T>
@@ -103,6 +105,10 @@ struct Vector3t
 	void Print(const char *_s);
 
 };
+
+typedef Vector3t<float> Vector3f;
+
+
 
 // 2D vector (float) .....................................................
 struct Vector2f
