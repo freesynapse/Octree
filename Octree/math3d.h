@@ -43,39 +43,9 @@
 #define MAX(a, b)			((a)>(b) ? (a):(b))
 
 
-// TYPEDEFS /STRUCTS /////////////////////////////////////////////////////
+// STRUCTURES / TYPE DEFINITIONS /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-// 3D vector (float) .....................................................
-/*
-struct Vector3f
-{
-	float x, y, z;
-
-	// Constructors
-	Vector3f() : x(0.0f), y(0.0f), z(0.0f) {};
-	Vector3f(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {};
-
-	// Operators
-    Vector3f& operator+=(const Vector3f& r)	{	x += r.x;	y += r.y;	z += r.z;	return *this;	}
-    Vector3f& operator-=(const Vector3f& r)	{	x -= r.x;	y -= r.y;	z -= r.z;	return *this;	}
-    Vector3f& operator*=(float f)			{	x *= f;		y *= f;		z *= f;		return *this;	}
-
-	Vector3f& operator*(float f)			{	x *= f;		y *= f;		z *= f;		return *this;	}
-	Vector3f operator+(const Vector3f &v)	{	return (Vector3f(x+v.x, y+v.y, z+v.z));				}
-	Vector3f operator-(const Vector3f &v)	{	return (Vector3f(x-v.x, y-v.y, z-v.z));				}
-	
-	// Member functions
-    Vector3f Cross(const Vector3f &v) const;
-	float Dot(const Vector3f &v) const;
-    float Length() const;
-	float Length2() const;
-	Vector3f& Normalize();
-	
-	void Print(const char *s);
-	
-};
-*/
 
 // Template, type dependent 3D vector ....................................
 template<typename T>

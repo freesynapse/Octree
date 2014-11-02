@@ -178,11 +178,9 @@ void c_Camera::Update(void)
 	float phi		= DEG_TO_RAD(m_fElevation);
 	float radius	= sinf(phi);
 
-	//Logw("heading: %.1f   elevation: %.1f", m_fHeading, m_fElevation);
 	m_n.x = -radius * cosf(theta);
 	m_n.y = cosf(phi);
 	m_n.z = -radius * sinf(theta);
-	//m_n.Print("\tN: ");
 
 	// Build UVN and F
 	// N: target vector
