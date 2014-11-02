@@ -168,6 +168,7 @@ void SetupGeometry()
 	for (int i = 0; i < nNodes; i++)
 		vNodes[i] = Vector3t<double>((double)(rand() % 10000 / 100.0 - 50.0), (double)(rand() % 10000 / 100.0 - 50.0), (double)(rand() % 10000 / 100.0 - 50.0));
 
+
 	
 	// OCTREE TESTS //
 
@@ -182,6 +183,7 @@ void SetupGeometry()
 	Logw("\n");
 	pTree->Print(pTree);
 
+	Logw("depth = %d\n", pTree->TreeDepth(pTree));
 
 	// END: OCTREE TESTS //
 

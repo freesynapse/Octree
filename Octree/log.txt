@@ -1,4 +1,4 @@
-OctreeSpheres: 2014-10-31 17:05:21
+OctreeSpheres: 2014-10-31 21:41:08
 
 c_ShaderObject::LoadShader(): Shader 35633 compiled
 c_ShaderObject::LoadShader(): Shader 35632 compiled
@@ -18,18 +18,155 @@ c_ShaderObject::CreateShaderProgram(): Program (6) linked
 c_Font::InitializeAtlas(): FreeType initialization		SUCCESS
 c_Font::InitializeAtlas(): Loading ./fonts/FreeSans.ttf		SUCCESS
 ERROR 1280: c_Font::InitializeAtlas(): glGenVertexArrays: invalid enumerant
-c_Font::InitializeAtlas(): Generated a 793x14 text atlas (10.8 kb) in 5.2416 ms
+c_Font::InitializeAtlas(): Generated a 769x15 text atlas (11.3 kb) in 9.0169 ms
 
+created new subnode at level 0
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+created new subnode at level 1
+Split() at level 0 containing 64 nodes
 
-level = 1	v0[ -50.0  -50.0  -50.0]   v1[ 0.0  0.0  0.0 ]	nodes = TRUE
-level = 1	v0[ 0.0  -50.0  -50.0]   v1[ 50.0  0.0  0.0 ]	nodes = TRUE
-level = 1	v0[ -50.0  0.0  -50.0]   v1[ 0.0  50.0  0.0 ]	nodes = TRUE
-level = 1	v0[ 0.0  0.0  -50.0]   v1[ 50.0  50.0  0.0 ]	nodes = TRUE
-level = 1	v0[ -50.0  -50.0  0.0]   v1[ 0.0  0.0  50.0 ]	nodes = TRUE
-level = 1	v0[ 0.0  -50.0  0.0]   v1[ 50.0  0.0  50.0 ]	nodes = TRUE
-level = 1	v0[ -50.0  0.0  0.0]   v1[ 0.0  50.0  50.0 ]	nodes = TRUE
-level = 1	v0[ 0.0  0.0  0.0]   v1[ 50.0  50.0  50.0 ]	nodes = TRUE
-level = 0	v0[ -50.0  -50.0  -50.0]   v1[ 50.0  50.0  50.0 ]	nodes = TRUE
+level = 1	v0[ -50.0  -50.0  -50.0]   v1[ 0.0  0.0  0.0 ]	nodes = 13 (TRUE)
+level = 1	v0[ 0.0  -50.0  -50.0]   v1[ 50.0  0.0  0.0 ]	nodes = 9 (TRUE)
+level = 1	v0[ -50.0  0.0  -50.0]   v1[ 0.0  50.0  0.0 ]	nodes = 9 (TRUE)
+level = 1	v0[ 0.0  0.0  -50.0]   v1[ 50.0  50.0  0.0 ]	nodes = 10 (TRUE)
+level = 1	v0[ -50.0  -50.0  0.0]   v1[ 0.0  0.0  50.0 ]	nodes = 9 (TRUE)
+level = 1	v0[ 0.0  -50.0  0.0]   v1[ 50.0  0.0  50.0 ]	nodes = 4 (TRUE)
+level = 1	v0[ -50.0  0.0  0.0]   v1[ 0.0  50.0  50.0 ]	nodes = 6 (TRUE)
+level = 1	v0[ 0.0  0.0  0.0]   v1[ 50.0  50.0  50.0 ]	nodes = 4 (TRUE)
+level = 0	v0[ -50.0  -50.0  -50.0]   v1[ 50.0  50.0  50.0 ]	nodes = 25 (TRUE)
+depth = 2
 
 
 --- CALL: MAIN::KeyboardAsync(): <ESC> recieved, leaving glutMainLoop().
@@ -38,5 +175,5 @@ c_ShaderObject::Release(): program 3; shaders 1, 2		SUCCESS
 c_ShaderObject::Release(): program 6; shaders 4, 5		SUCCESS
 
 
-APPLICATION TERMINATED : 2014-10-31 17:05:51
+APPLICATION TERMINATED : 2014-10-31 21:41:12
 

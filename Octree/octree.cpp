@@ -15,6 +15,8 @@ c_Octree::c_Octree(AABB3 _aabb, int _level)
 	m_bContainsVertex = false;
 	m_vVertices.clear();
 
+	Logw("created new subnode at level %d\n", m_iLevel);
+
 } // end c_Octree::c_Octree()
 
 
@@ -36,9 +38,14 @@ bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 		
 		std::vector<Vector3t<double> > vertices = _root->GetVertices();
 
-		for (size_t i = 0; i < _root->GetVertices().size(); i++)
+		Logw("Split() at level %d containing %d nodes\n", _root->GetLevel(), vertices.size());
+
+			for (size_t i = 0; i < _root->GetVertices().size(); i++)
+		{
 			//_root->Insert(_root->GetChild(_root->GetChildIndex(_root, _v)), _v);	// fel!!!
-			_root->Insert(_root->GetChild(_root->GetChildIndex(_root, vertices[i])), vertices[i]);
+			int index = _root->GetChildIndex(_root, vertices[i]);
+			_root->Insert(_root->GetChild(index), vertices[i]);
+		}
 			
 		_root->ClearVertices();
 		
@@ -172,8 +179,8 @@ void c_Octree::Print(c_Octree *_root)
 		_root->Print(_root->GetChild(i));
 	
 	AABB3 aabb = _root->GetAABB();
-	Logw("level = %d\tv0[ %.1f  %.1f  %.1f]   v1[ %.1f  %.1f  %.1f ]\tnodes = %s\n",
-		_root->GetLevel(), aabb.v0.x, aabb.v0.y, aabb.v0.z, aabb.v1.x, aabb.v1.y, aabb.v1.z, _root->ContainsVertex() ? "TRUE" : "FALSE");
+	Logw("level = %d\tv0[ %.1f  %.1f  %.1f]   v1[ %.1f  %.1f  %.1f ]\tnodes = %d (%s)\n",
+		_root->GetLevel(), aabb.v0.x, aabb.v0.y, aabb.v0.z, aabb.v1.x, aabb.v1.y, aabb.v1.z, _root->GetVertices().size(), _root->ContainsVertex() ? "TRUE" : "FALSE");
 
 } // end c_Octree::Print()
 

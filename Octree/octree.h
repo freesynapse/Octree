@@ -11,7 +11,7 @@
 
 // DEFINITIONS / MACROS //////////////////////////////////////////////////
 
-#define OCTREE_MAX_DEPTH				7
+#define OCTREE_MAX_DEPTH				128
 #define OCTREE_MAX_NODE_VERTICES		64
 
 
