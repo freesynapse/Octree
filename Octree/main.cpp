@@ -182,6 +182,8 @@ void SetupGeometry()
 	Logw("\n");
 	pTree->Print(pTree);
 
+	nTreeLevels = pTree->TreeDepth(pTree);
+
 
 	// END: OCTREE TESTS //
 

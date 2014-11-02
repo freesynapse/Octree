@@ -12,7 +12,7 @@
 // DEFINITIONS / MACROS //////////////////////////////////////////////////
 
 #define OCTREE_MAX_DEPTH				7
-#define OCTREE_MAX_NODE_VERTICES		64
+#define OCTREE_MAX_NODE_VERTICES		4
 
 
 
@@ -76,7 +76,7 @@ public:
 	AABB3 GetAABB()									{	return (m_AABB);			}
 	int GetLevel()									{	return (m_iLevel);			}
 	void AddVector(Vector3t<double> _v)				{	m_vVertices.push_back(_v);	}
-	std::vector<Vector3t<double> > &GetVertices()	{	return (m_vVertices);		}
+	std::vector<Vector3t<double> > GetVertices()	{	return (m_vVertices);		}
 	void ClearVertices()							{	m_vVertices.clear();		}
 	bool ContainsVertex()							{	return (m_bContainsVertex); }
 	void SetContainsVertex(bool _b)					{	m_bContainsVertex = _b;		}

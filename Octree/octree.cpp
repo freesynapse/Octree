@@ -26,30 +26,60 @@ bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 	if (/*!_root->GetAABB().ContainsPoint(_v) || */_root->GetLevel() > OCTREE_MAX_DEPTH)
 		return (false);
 
-	// this node (or its children continas vertices)
-	_root->SetContainsVertex(true);
+	Logw("insert at level %d\n", _root->GetLevel());
 
-	if (_root->GetVertices().size() >= OCTREE_MAX_NODE_VERTICES &&
-		_root->GetLevel() != OCTREE_MAX_DEPTH)
+	if (_root->ContainsVertex() && _root->GetChild(0) != NULL)
+	{
+		// this node have already been split and hence the vertex
+		// should be inserted into the correct child node
+		int index = _root->GetChildIndex(_root, _v);
+		_root->Insert(_root->GetChild(index), _v);
+
+		Logw("\ttried to insert into node at level %d, but already contained vertices below.\tInserted into child %d\n", _root->GetLevel(), index);
+
+		_root->SetContainsVertex(true);
+
+		return (true);
+
+	}
+	else if (_root->GetVertices().size() >= OCTREE_MAX_NODE_VERTICES &&
+			 _root->GetLevel() != OCTREE_MAX_DEPTH)
 	{
 		_root->Split(_root);
-		
+
+		Logw("\tperformed a split due to % verts in this node (level %d). Inserting vertices into children\n", _root->GetLevel());
+
+		// add the incoming vertex
+		_root->AddVector(_v);
+
 		std::vector<Vector3t<double> > vertices = _root->GetVertices();
 
-		for (size_t i = 0; i < _root->GetVertices().size(); i++)
-			//_root->Insert(_root->GetChild(_root->GetChildIndex(_root, _v)), _v);	// fel!!!
-			_root->Insert(_root->GetChild(_root->GetChildIndex(_root, vertices[i])), vertices[i]);
-			
-		_root->ClearVertices();
+		// step through all vertices already in this node
+		// and insert into children instead
+		for (size_t i = 0; i < vertices.size(); i++)
+		{
+			int index = _root->GetChildIndex(_root, vertices[i]);
+			_root->Insert(_root->GetChild(index), vertices[i]);
+		}
 		
+		Logw("\t(%d verts in here that were inserted)\n", vertices.size());
+		_root->ClearVertices();
+
+		// this node (or its children) contains vertices
+		_root->SetContainsVertex(true);
+
 		return (true);
 	}
 	else
 	{
+		Logw("this is the end, at level %d. %d verts at this level\n", _root->GetLevel(), _root->GetVertices().size());
 		// ended up here if
 		//	1. we reached max depth
 		//	2. there is still room for more vertices in this node
 		_root->AddVector(_v);
+
+		// this node (or its children) contains vertices
+		_root->SetContainsVertex(true);
 
 		return (true);
 	}
@@ -132,7 +162,7 @@ void c_Octree::LinesAABB(c_Octree *_root, std::vector<Line3> *_vlines)
 	if (_root == NULL)
 		return;
 
-	if ((_root->GetLevel() > 0 && _root->ContainsVertex()) || _root->GetLevel() == 0)
+	if ((_root->GetLevel() > 0 && _root->GetVertices().size() > 0) || _root->GetLevel() == 0)
 	{
 		AABB3 aabb = _root->GetAABB();
 
@@ -172,8 +202,8 @@ void c_Octree::Print(c_Octree *_root)
 		_root->Print(_root->GetChild(i));
 	
 	AABB3 aabb = _root->GetAABB();
-	Logw("level = %d\tv0[ %.1f  %.1f  %.1f]   v1[ %.1f  %.1f  %.1f ]\tnodes = %s\n",
-		_root->GetLevel(), aabb.v0.x, aabb.v0.y, aabb.v0.z, aabb.v1.x, aabb.v1.y, aabb.v1.z, _root->ContainsVertex() ? "TRUE" : "FALSE");
+	Logw("level = %d\tv0[ %.1f  %.1f  %.1f]   v1[ %.1f  %.1f  %.1f ]\tnodes = %d (%s)\n",
+		_root->GetLevel(), aabb.v0.x, aabb.v0.y, aabb.v0.z, aabb.v1.x, aabb.v1.y, aabb.v1.z, _root->GetVertices().size(), _root->ContainsVertex() ? "TRUE" : "FALSE");
 
 } // end c_Octree::Print()
 

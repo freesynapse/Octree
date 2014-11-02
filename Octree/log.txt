@@ -1,4 +1,4 @@
-OctreeSpheres: 2014-10-31 17:05:21
+OctreeSpheres: 2014-11-01 22:06:59
 
 c_ShaderObject::LoadShader(): Shader 35633 compiled
 c_ShaderObject::LoadShader(): Shader 35632 compiled
@@ -18,18 +18,691 @@ c_ShaderObject::CreateShaderProgram(): Program (6) linked
 c_Font::InitializeAtlas(): FreeType initialization		SUCCESS
 c_Font::InitializeAtlas(): Loading ./fonts/FreeSans.ttf		SUCCESS
 ERROR 1280: c_Font::InitializeAtlas(): glGenVertexArrays: invalid enumerant
-c_Font::InitializeAtlas(): Generated a 793x14 text atlas (10.8 kb) in 5.2416 ms
+c_Font::InitializeAtlas(): Generated a 793x14 text atlas (10.8 kb) in 5.2648 ms
 
+insert at level 0
+this is the end, at level 0. 0 verts at this level
+insert at level 0
+this is the end, at level 0. 1 verts at this level
+insert at level 0
+this is the end, at level 0. 2 verts at this level
+insert at level 0
+this is the end, at level 0. 3 verts at this level
+insert at level 0
+	performed a split due to verts in this node (level 0). Inserting vertices into children
+insert at level 1
+this is the end, at level 1. 0 verts at this level
+insert at level 1
+this is the end, at level 1. 0 verts at this level
+insert at level 1
+this is the end, at level 1. 0 verts at this level
+insert at level 1
+this is the end, at level 1. 0 verts at this level
+insert at level 1
+this is the end, at level 1. 1 verts at this level
+	(5 verts in here that were inserted)
+insert at level 0
+insert at level 1
+this is the end, at level 1. 2 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+this is the end, at level 1. 3 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+	performed a split due to verts in this node (level 1). Inserting vertices into children
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	(5 verts in here that were inserted)
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+this is the end, at level 1. 1 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 2
+insert at level 0
+insert at level 1
+this is the end, at level 1. 0 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 5
+insert at level 0
+insert at level 1
+this is the end, at level 1. 1 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+this is the end, at level 1. 0 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 7
+insert at level 0
+insert at level 1
+this is the end, at level 1. 1 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+this is the end, at level 1. 0 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 4
+insert at level 0
+insert at level 1
+this is the end, at level 1. 2 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+this is the end, at level 1. 1 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 7
+insert at level 0
+insert at level 1
+this is the end, at level 1. 1 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 4
+insert at level 0
+insert at level 1
+this is the end, at level 1. 1 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 5
+insert at level 0
+insert at level 1
+this is the end, at level 1. 2 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+this is the end, at level 1. 0 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+this is the end, at level 1. 2 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 7
+insert at level 0
+insert at level 1
+this is the end, at level 1. 2 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 2
+insert at level 0
+insert at level 1
+this is the end, at level 1. 1 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+this is the end, at level 1. 3 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 7
+insert at level 0
+insert at level 1
+this is the end, at level 1. 2 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+this is the end, at level 1. 3 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+this is the end, at level 1. 3 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 2
+insert at level 0
+insert at level 1
+this is the end, at level 1. 3 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+	performed a split due to verts in this node (level 1). Inserting vertices into children
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	(5 verts in here that were inserted)
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 2
+insert at level 0
+insert at level 1
+	performed a split due to verts in this node (level 1). Inserting vertices into children
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	(5 verts in here that were inserted)
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 7
+insert at level 0
+insert at level 1
+	performed a split due to verts in this node (level 1). Inserting vertices into children
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	(5 verts in here that were inserted)
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+this is the end, at level 1. 3 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+this is the end, at level 1. 2 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 4
+insert at level 0
+insert at level 1
+this is the end, at level 1. 2 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 5
+insert at level 0
+insert at level 1
+	performed a split due to verts in this node (level 1). Inserting vertices into children
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	(5 verts in here that were inserted)
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 1
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 2
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 4
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 2
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 3
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 5
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 2
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 1
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+	performed a split due to verts in this node (level 1). Inserting vertices into children
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	(5 verts in here that were inserted)
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 1
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 4
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 5
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+this is the end, at level 1. 3 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 4
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 0
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 7
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 2 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 1
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 1
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 4
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 6
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 5
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+this is the end, at level 1. 3 verts at this level
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 5
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 2
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 5
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+	performed a split due to verts in this node (level 1). Inserting vertices into children
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	(5 verts in here that were inserted)
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 4
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 2 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 1
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+	performed a split due to verts in this node (level 1). Inserting vertices into children
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	(5 verts in here that were inserted)
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 5
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 2 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 7
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 1
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 4
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 0
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 5
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 2 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 5
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 3 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 1
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 7
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 2
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 5
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 5
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 3 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 7
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 7
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 2 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 3
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 0
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 4
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 4
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 4
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 4
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 2 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 7
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 2
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 2 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 4
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 2
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 0
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 7
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 7
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 0
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 5
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 2
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 3 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 5
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 6
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 5
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 3 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 3
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 7
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 3
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 2
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 3
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 2 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 3
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 2
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 2 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 0
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 6
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 3 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 0
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 4
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 2 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 3
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 0
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 2
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 7
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 1 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 3
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 1
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 4
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 5
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 5
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 4
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 2 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 2
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 1
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 2 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 0
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 3 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 3
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 0
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 0 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 0
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 3
+insert at level 0
+insert at level 1
+insert at level 2
+this is the end, at level 2. 3 verts at this level
+	tried to insert into node at level 1, but already contained vertices below.	Inserted into child 0
+	tried to insert into node at level 0, but already contained vertices below.	Inserted into child 6
 
-level = 1	v0[ -50.0  -50.0  -50.0]   v1[ 0.0  0.0  0.0 ]	nodes = TRUE
-level = 1	v0[ 0.0  -50.0  -50.0]   v1[ 50.0  0.0  0.0 ]	nodes = TRUE
-level = 1	v0[ -50.0  0.0  -50.0]   v1[ 0.0  50.0  0.0 ]	nodes = TRUE
-level = 1	v0[ 0.0  0.0  -50.0]   v1[ 50.0  50.0  0.0 ]	nodes = TRUE
-level = 1	v0[ -50.0  -50.0  0.0]   v1[ 0.0  0.0  50.0 ]	nodes = TRUE
-level = 1	v0[ 0.0  -50.0  0.0]   v1[ 50.0  0.0  50.0 ]	nodes = TRUE
-level = 1	v0[ -50.0  0.0  0.0]   v1[ 0.0  50.0  50.0 ]	nodes = TRUE
-level = 1	v0[ 0.0  0.0  0.0]   v1[ 50.0  50.0  50.0 ]	nodes = TRUE
-level = 0	v0[ -50.0  -50.0  -50.0]   v1[ 50.0  50.0  50.0 ]	nodes = TRUE
+level = 2	v0[ -50.0  -50.0  -50.0]   v1[ -25.0  -25.0  -25.0 ]	nodes = 4 (TRUE)
+level = 2	v0[ -25.0  -50.0  -50.0]   v1[ 0.0  -25.0  -25.0 ]	nodes = 4 (TRUE)
+level = 2	v0[ -50.0  -25.0  -50.0]   v1[ -25.0  0.0  -25.0 ]	nodes = 0 (FALSE)
+level = 2	v0[ -25.0  -25.0  -50.0]   v1[ 0.0  0.0  -25.0 ]	nodes = 4 (TRUE)
+level = 2	v0[ -50.0  -50.0  -25.0]   v1[ -25.0  -25.0  0.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ -25.0  -50.0  -25.0]   v1[ 0.0  -25.0  0.0 ]	nodes = 0 (FALSE)
+level = 2	v0[ -50.0  -25.0  -25.0]   v1[ -25.0  0.0  0.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ -25.0  -25.0  -25.0]   v1[ 0.0  0.0  0.0 ]	nodes = 1 (TRUE)
+level = 1	v0[ -50.0  -50.0  -50.0]   v1[ 0.0  0.0  0.0 ]	nodes = 0 (TRUE)
+level = 2	v0[ 0.0  -50.0  -50.0]   v1[ 25.0  -25.0  -25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 25.0  -50.0  -50.0]   v1[ 50.0  -25.0  -25.0 ]	nodes = 3 (TRUE)
+level = 2	v0[ 0.0  -25.0  -50.0]   v1[ 25.0  0.0  -25.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ 25.0  -25.0  -50.0]   v1[ 50.0  0.0  -25.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ 0.0  -50.0  -25.0]   v1[ 25.0  -25.0  0.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ 25.0  -50.0  -25.0]   v1[ 50.0  -25.0  0.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 0.0  -25.0  -25.0]   v1[ 25.0  0.0  0.0 ]	nodes = 0 (FALSE)
+level = 2	v0[ 25.0  -25.0  -25.0]   v1[ 50.0  0.0  0.0 ]	nodes = 4 (TRUE)
+level = 1	v0[ 0.0  -50.0  -50.0]   v1[ 50.0  0.0  0.0 ]	nodes = 0 (TRUE)
+level = 2	v0[ -50.0  0.0  -50.0]   v1[ -25.0  25.0  -25.0 ]	nodes = 0 (FALSE)
+level = 2	v0[ -25.0  0.0  -50.0]   v1[ 0.0  25.0  -25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ -50.0  25.0  -50.0]   v1[ -25.0  50.0  -25.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ -25.0  25.0  -50.0]   v1[ 0.0  50.0  -25.0 ]	nodes = 3 (TRUE)
+level = 2	v0[ -50.0  0.0  -25.0]   v1[ -25.0  25.0  0.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ -25.0  0.0  -25.0]   v1[ 0.0  25.0  0.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ -50.0  25.0  -25.0]   v1[ -25.0  50.0  0.0 ]	nodes = 0 (FALSE)
+level = 2	v0[ -25.0  25.0  -25.0]   v1[ 0.0  50.0  0.0 ]	nodes = 3 (TRUE)
+level = 1	v0[ -50.0  0.0  -50.0]   v1[ 0.0  50.0  0.0 ]	nodes = 0 (TRUE)
+level = 2	v0[ 0.0  0.0  -50.0]   v1[ 25.0  25.0  -25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 25.0  0.0  -50.0]   v1[ 50.0  25.0  -25.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ 0.0  25.0  -50.0]   v1[ 25.0  50.0  -25.0 ]	nodes = 3 (TRUE)
+level = 2	v0[ 25.0  25.0  -50.0]   v1[ 50.0  50.0  -25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 0.0  0.0  -25.0]   v1[ 25.0  25.0  0.0 ]	nodes = 3 (TRUE)
+level = 2	v0[ 25.0  0.0  -25.0]   v1[ 50.0  25.0  0.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 0.0  25.0  -25.0]   v1[ 25.0  50.0  0.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 25.0  25.0  -25.0]   v1[ 50.0  50.0  0.0 ]	nodes = 2 (TRUE)
+level = 1	v0[ 0.0  0.0  -50.0]   v1[ 50.0  50.0  0.0 ]	nodes = 0 (TRUE)
+level = 2	v0[ -50.0  -50.0  0.0]   v1[ -25.0  -25.0  25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ -25.0  -50.0  0.0]   v1[ 0.0  -25.0  25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ -50.0  -25.0  0.0]   v1[ -25.0  0.0  25.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ -25.0  -25.0  0.0]   v1[ 0.0  0.0  25.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ -50.0  -50.0  25.0]   v1[ -25.0  -25.0  50.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ -25.0  -50.0  25.0]   v1[ 0.0  -25.0  50.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ -50.0  -25.0  25.0]   v1[ -25.0  0.0  50.0 ]	nodes = 0 (FALSE)
+level = 2	v0[ -25.0  -25.0  25.0]   v1[ 0.0  0.0  50.0 ]	nodes = 0 (FALSE)
+level = 1	v0[ -50.0  -50.0  0.0]   v1[ 0.0  0.0  50.0 ]	nodes = 0 (TRUE)
+level = 2	v0[ 0.0  -50.0  0.0]   v1[ 25.0  -25.0  25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 25.0  -50.0  0.0]   v1[ 50.0  -25.0  25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 0.0  -25.0  0.0]   v1[ 25.0  0.0  25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 25.0  -25.0  0.0]   v1[ 50.0  0.0  25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 0.0  -50.0  25.0]   v1[ 25.0  -25.0  50.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 25.0  -50.0  25.0]   v1[ 50.0  -25.0  50.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 0.0  -25.0  25.0]   v1[ 25.0  0.0  50.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ 25.0  -25.0  25.0]   v1[ 50.0  0.0  50.0 ]	nodes = 1 (TRUE)
+level = 1	v0[ 0.0  -50.0  0.0]   v1[ 50.0  0.0  50.0 ]	nodes = 0 (TRUE)
+level = 2	v0[ -50.0  0.0  0.0]   v1[ -25.0  25.0  25.0 ]	nodes = 4 (TRUE)
+level = 2	v0[ -25.0  0.0  0.0]   v1[ 0.0  25.0  25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ -50.0  25.0  0.0]   v1[ -25.0  50.0  25.0 ]	nodes = 0 (FALSE)
+level = 2	v0[ -25.0  25.0  0.0]   v1[ 0.0  50.0  25.0 ]	nodes = 4 (TRUE)
+level = 2	v0[ -50.0  0.0  25.0]   v1[ -25.0  25.0  50.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ -25.0  0.0  25.0]   v1[ 0.0  25.0  50.0 ]	nodes = 4 (TRUE)
+level = 2	v0[ -50.0  25.0  25.0]   v1[ -25.0  50.0  50.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ -25.0  25.0  25.0]   v1[ 0.0  50.0  50.0 ]	nodes = 0 (FALSE)
+level = 1	v0[ -50.0  0.0  0.0]   v1[ 0.0  50.0  50.0 ]	nodes = 0 (TRUE)
+level = 2	v0[ 0.0  0.0  0.0]   v1[ 25.0  25.0  25.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ 25.0  0.0  0.0]   v1[ 50.0  25.0  25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 0.0  25.0  0.0]   v1[ 25.0  50.0  25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 25.0  25.0  0.0]   v1[ 50.0  50.0  25.0 ]	nodes = 1 (TRUE)
+level = 2	v0[ 0.0  0.0  25.0]   v1[ 25.0  25.0  50.0 ]	nodes = 0 (FALSE)
+level = 2	v0[ 25.0  0.0  25.0]   v1[ 50.0  25.0  50.0 ]	nodes = 0 (FALSE)
+level = 2	v0[ 0.0  25.0  25.0]   v1[ 25.0  50.0  50.0 ]	nodes = 2 (TRUE)
+level = 2	v0[ 25.0  25.0  25.0]   v1[ 50.0  50.0  50.0 ]	nodes = 1 (TRUE)
+level = 1	v0[ 0.0  0.0  0.0]   v1[ 50.0  50.0  50.0 ]	nodes = 0 (TRUE)
+level = 0	v0[ -50.0  -50.0  -50.0]   v1[ 50.0  50.0  50.0 ]	nodes = 0 (TRUE)
 
 
 --- CALL: MAIN::KeyboardAsync(): <ESC> recieved, leaving glutMainLoop().
@@ -38,5 +711,5 @@ c_ShaderObject::Release(): program 3; shaders 1, 2		SUCCESS
 c_ShaderObject::Release(): program 6; shaders 4, 5		SUCCESS
 
 
-APPLICATION TERMINATED : 2014-10-31 17:05:51
+APPLICATION TERMINATED : 2014-11-01 22:07:11
 
