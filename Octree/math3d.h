@@ -48,6 +48,8 @@
 
 
 // Template, type dependent 3D vector ....................................
+#pragma warning(disable : 4244)		// conversion from double to float
+
 template<typename T>
 struct Vector3t
 {
@@ -62,26 +64,56 @@ struct Vector3t
 	Vector3t &operator-=(const Vector3t &_v)	{	x -= _v.x;	y -= _v.y;	z -= _v.z;	return (*this); }
 	Vector3t &operator*=(T _t)					{	x *= _t;	y *= _t;	z *= _t;	return (*this); }
 
-	Vector3t operator+(const Vector3t &_v)		{	return (Vector3f(x + _v.x, y + _v.y, z + _v.z));	}
-	Vector3t operator-(const Vector3t &_v)		{	return (Vector3f(x - _v.x, y - _v.y, z - _v.z));	}
+	Vector3t operator+(const Vector3t &_v)		{	return (Vector3t<float>(x + _v.x, y + _v.y, z + _v.z));	}
+	Vector3t operator-(const Vector3t &_v)		{	return (Vector3t<float>(x - _v.x, y - _v.y, z - _v.z));	}
 	Vector3t operator*(const T _t)				{	x *= _t;	y *= _t;	z *= _t;	return (*this); }
 
 	// Member functions
-	Vector3t<T> Cross(const Vector3t<T> &_v) const;
-	T Dot(const Vector3t<T> &_v) const;
-	T Length() const;
-	T Length2() const;
-	Vector3t<T> &Normalize();
+	Vector3t<T> Cross(const Vector3t<T> &_v) const
+	{
+		const T _x = y * _v.z - z * _v.y;
+		const T _y = z * _v.x - x * _v.z;
+		const T _z = x * _v.y - y * _v.x;
 
-	void Print(const char *_s);
+		return (Vector3t<T>(_x, _y, _z));
+	}
+
+	T Dot(const Vector3t<T> &_v) const
+	{
+		return (x * _v.x + y * _v.y + z * _v.z);
+	}
+
+	T Length() const
+	{
+		return (sqrt(x * x + y * y + z * z));
+	}
+
+	T Length2() const
+	{
+		return (x * x + y * y + z * z);
+	}
+
+	Vector3t<T> &Normalize()
+	{
+		T length = sqrt(x * x + y * y + z * z);
+
+		if (length < EPSILON_E5)
+			return (*this);
+
+		T length_inv = 1.0 / length;
+		x *= length_inv;
+		y *= length_inv;
+		z *= length_inv;
+
+		return (*this);
+	}
+
+	void Print(const char *_s)
+	{
+		Logw("%s  [ %.1f  %.1f  %.1f ]\n", s, x, y, z);
+	}
 
 };
-
-
-// Some basic type definitions of 3D vector types
-typedef Vector3t<float> Vector3f;
-typedef Vector3t<double> Vector3d;
-typedef Vector3t<int> Vector3i;
 
 
 
@@ -155,7 +187,7 @@ public:
 
 	void					QuaternionRotation		(glm::fquat q);
 
-    void					CameraTransform			(Vector3f U, Vector3f V, Vector3f N);
+    void					CameraTransform			(Vector3t<float> U, Vector3t<float> V, Vector3t<float> N);
     void					PersProjTransform		(float fov, float ar, float znear, float zfar);
 	
 	void					Print					(const char *str);
@@ -168,17 +200,109 @@ public:
 // FUNCTION PROTOTYPES ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-//Vector3f	Cross					(const Vector3f &v0, const Vector3f &v1);
-//float		Dot						(const Vector3f &v0, const Vector3f &v1);
+template<typename T>
+Vector3t<T>	Cross(const Vector3t<T> &_v0, const Vector3t<T> &_v1)
+{
+	const T _x = _v0.y * _v1.z - _v0.z * _v1.y;
+	const T _y = _v0.z * _v1.x - _v0.x * _v1.z;
+	const T _z = _v0.x * _v1.y - _v0.y * _v1.x;
+
+	return (Vector3t<T>(_x, _y, _z));
+}
 
 template<typename T>
-Vector3t<T>	Cross					(const Vector3t<T> &_v0, const Vector3t<T> &_v1);
-template<typename T>
-Vector3t<T> Dot						(const Vector3t<T> &_v0, const Vector3t<T> &_v1);
+T Dot(const Vector3t<T> &_v0, const Vector3t<T> &_v1)
+{
+	return (_v0.x * _v1.x + _v0.y * _v1.y + _v0.z * _v1.z);
+}
 
-glm::fquat	AxisAngleToQuaternion	(float &angle, Vector3f &axis);
+
+glm::fquat	AxisAngleToQuaternion	(float &angle, Vector3t<float> &axis);
 
 
 #endif // __MATH3D_H
+
+
+
+
+
+
+// Vector3t MEMBER FUNCTIONS /////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+/*
+template<typename T>
+Vector3t<T> Vector3t<T>::Cross(const Vector3t<T> &_v) const
+{
+	const T _x = y * _v.z - z * _v.y;
+	const T _y = z * _v.x - x * _v.z;
+	const T _z = x * _v.y - y * _v.x;
+
+	return (Vector3t<T>(_x, _y, _z));
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+Vector3t<T>	Cross(const Vector3t<T> &_v0, const Vector3t<T> &_v1)
+{
+	const T _x = _v0.y * _v1.z - _v0.z * _v1.y;
+	const T _y = _v0.z * _v1.x - _v0.x * _v1.z;
+	const T _z = _v0.x * _v1.y - _v0.y * _v1.x;
+
+	return (Vector3t<T>(_x, _y, _z));
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+T Vector3t<T>::Dot(const Vector3t<T> &_v) const
+{
+	return (x * _v.x + y * _v.y + z * _v.z);
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+Vector3t<T> Dot(const Vector3t<T> &_v0, const Vector3t<T> &_v1)
+{
+	return (_v0.x * _v1.x + _v0.y * _v1.y + _v0.z * _v1.z);
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+T Vector3t<T>::Length() const
+{
+	return (sqrt(x * x + y * y + z * z));
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+T Vector3t<T>::Length2() const
+{
+	return (x * x + y * y + z * z);
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+Vector3t<T> &Vector3t<T>::Normalize()
+{
+	T length = sqrt(x * x + y * y + z * z);
+
+	if (length < EPSILON_E5)
+		return (*this);
+
+	T length_inv = 1.0 / length;
+	x *= length_inv;
+	y *= length_inv;
+	z *= length_inv;
+
+	return (*this);
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+void Vector3t<T>::Print(const char *_s)
+{
+	Logw("%s  [ %.1f  %.1f  %.1f ]\n", s, x, y, z);
+}
+
+*/
 
 

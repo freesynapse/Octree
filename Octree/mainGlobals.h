@@ -65,7 +65,7 @@ GLuint vaoNodes,
 	   vboNodePositions,
 	   vaoLines,
 	   vboLines;
-int nNodes = 10000;
+int nNodes = 1000;
 int nLines = 0;
 
 // octree
@@ -75,12 +75,12 @@ Matrix4f mModelMatrix;
 Matrix4f mViewMatrix;
 Matrix4f mProjectionMatrix;
 glm::fquat qRotation;
-Vector3f vRotationAxis = Vector3f(0.0f, 0.0f, 1.0f);
+Vector3t<float> vRotationAxis = Vector3t<float>(0.0f, 0.0f, 1.0f);
 float fTheta = 0.0f;
 
 int nTreeLevels;
 int iDisplayLevel = 0;
-Vector3f rgbNodeColor = Vector3f(1.0f, 0.0f, 0.0f);
+Vector3t<float> rgbNodeColor = Vector3t<float>(1.0f, 0.0f, 0.0f);
 
 
 // .camera/input

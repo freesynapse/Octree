@@ -162,11 +162,14 @@ void SetupGeometry()
 {
 
 	// Setup the vertex data for rendering of the nodes
+	std::default_random_engine gen;
+	std::normal_distribution<double> dist(30.0, 5.0);
+
 	std::vector<Vector3t<double> > vNodes;
 	vNodes.resize(nNodes);
 	srand((unsigned int)time(NULL));
 	for (int i = 0; i < nNodes; i++)
-		vNodes[i] = Vector3t<double>((double)(rand() % 10000 / 100.0 - 50.0), (double)(rand() % 10000 / 100.0 - 50.0), (double)(rand() % 10000 / 100.0 - 50.0));
+		vNodes[i] = Vector3t<double>(dist(gen), dist(gen), dist(gen));
 
 	
 	// OCTREE TESTS //
@@ -319,7 +322,7 @@ void Render()
 	glDrawArrays(GL_POINTS, 0, nNodes);
 
 	// Render AABB lines
-	glUniform3fv(uniformColor, 1, (const GLfloat *)&Vector3f(1.0f, 1.0f, 0.0f));
+	glUniform3fv(uniformColor, 1, (const GLfloat *)&Vector3t<float>(1.0f, 1.0f, 0.0f));
 
 	glBindVertexArray(vaoLines);
 	glEnableVertexAttribArray(attributePositions);
@@ -342,7 +345,7 @@ void Render()
 	// current fps
 	pFont->RenderString_ss(2, y += font_height, "FPS: %.2f", dFPS);
 
-	Vector3f p = pCamera->Pos();
+	Vector3t<float> p = pCamera->Pos();
 	pFont->RenderString_ss(2, y += font_height, "Camera:");
 	pFont->RenderString_ss(2, y += font_height, "pos[%.1f  %.1f  %.1f]", p.x, p.y, p.z);
 	pFont->RenderString_ss(2, y += font_height, "heading: %.1f    elevation: %.1f", pCamera->Heading(), pCamera->Elevation());
@@ -467,9 +470,9 @@ int main(int argc, char *argv[])
 								   0.1f,
 								   1000.0f);
 
-	pCamera->SetCamera(Vector3f(-13.0f, 0.0f, -90.0f),
-					   Vector3f(0.0f, 0.0f, 1.0f),
-					   Vector3f(0.0f, 1.0f, 0.0f));
+	pCamera->SetCamera(Vector3t<float>(-13.0f, 0.0f, -90.0f),
+					   Vector3t<float>(0.0f, 0.0f, 1.0f),
+					   Vector3t<float>(0.0f, 1.0f, 0.0f));
 
 	pCamera->SetHeading(270.0f);
 	pCamera->SetElevation(90.0f);

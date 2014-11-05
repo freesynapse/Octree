@@ -4,84 +4,6 @@
 
 
 
-// Vector3t MEMBER FUNCTIONS /////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-
-template<typename T>
-Vector3t<T> Vector3t<T>::Cross(const Vector3t<T> &_v) const
-{
-	const T _x = y * _v.z - z * _v.y;
-	const T _y = z * _v.x - x * _v.z;
-	const T _z = x * _v.y - y * _v.x;
-
-	return (Vector3t<T>(_x, _y, _z));
-}
-
-//////////////////////////////////////////////////////////////////////////
-template<typename T>
-Vector3t<T>	Cross(const Vector3t<T> &_v0, const Vector3t<T> &_v1)
-{
-	const T _x = _v0.y * _v1.z - _v0.z * _v1.y;
-	const T _y = _v0.z * _v1.x - _v0.x * _v1.z;
-	const T _z = _v0.x * _v1.y - _v0.y * _v1.x;
-
-	return (Vector3t<T>(_x, _y, _z));
-}
-
-//////////////////////////////////////////////////////////////////////////
-template<typename T>
-T Vector3t<T>::Dot(const Vector3t<T> &_v) const
-{
-	return (x * _v.x + y * _v.y + z * _v.z);
-}
-
-//////////////////////////////////////////////////////////////////////////
-template<typename T>
-Vector3t<T> Dot(const Vector3t<T> &_v0, const Vector3t<T> &_v1)
-{
-	return (_v0.x * _v1.x + _v0.y * _v1.y + _v0.z * _v1.z);
-}
-
-//////////////////////////////////////////////////////////////////////////
-template<typename T>
-T Vector3t<T>::Length() const
-{
-	return (sqrt(x * x + y * y + z * z));
-}
-
-//////////////////////////////////////////////////////////////////////////
-template<typename T>
-T Vector3t<T>::Length2() const
-{
-	return (x * x + y * y + z * z);
-}
-
-//////////////////////////////////////////////////////////////////////////
-template<typename T>
-Vector3t<T> &Vector3t<T>::Normalize()
-{
-	const T length = sqrt(x * x + y * y + z * z);
-
-	if (length < EPSILON_E5)
-		return (*this);
-
-	T length_inv = 1.0 / length;
-	x *= length_inv;
-	y *= length_inv;
-	z *= length_inv;
-
-	return (*this);
-}
-
-//////////////////////////////////////////////////////////////////////////
-template<typename T>
-void Vector3t<T>::Print(const char *_s)
-{
-	Logw("%s  [ %.1f  %.1f  %.1f ]\n", s, x, y, z);
-}
-
-
-
 // Matrix4f MEMBER FUNCTIONS /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
@@ -153,7 +75,6 @@ void Matrix4f::QuaternionRotation(glm::fquat q)
 	float wy = q.w * q.y;
 	float wz = q.w * q.z;
 
-	
 	m[0][0] = 1.0f - 2*y2 - 2*z2;	m[0][1] = 2*xy - 2*wz;			m[0][2] = 2*xz + 2*wy;			m[0][3] = 0.0f;
 	m[1][0] = 2*xy + 2*wz;			m[1][1] = 1.0f - 2*x2 - 2*z2;	m[1][2] = 2*yz - 2*wx;			m[1][3] = 0.0f;
 	m[2][0] = 2*xz - 2*wy;			m[2][1] = 2*yz + 2*wx;			m[2][2] = 1.0f - 2*x2 - 2*y2;	m[2][3] = 0.0f;
@@ -162,7 +83,7 @@ void Matrix4f::QuaternionRotation(glm::fquat q)
 } // end Matrix4f::QuaternionRotation()
 
 //////////////////////////////////////////////////////////////////////////
-void Matrix4f::CameraTransform(Vector3f U, Vector3f V, Vector3f N)
+void Matrix4f::CameraTransform(Vector3t<float> U, Vector3t<float> V, Vector3t<float> N)
 {
     m[0][0] = U.x;   m[0][1] = U.y;   m[0][2] = U.z;   m[0][3] = 0.0f;
     m[1][0] = V.x;   m[1][1] = V.y;   m[1][2] = V.z;   m[1][3] = 0.0f;
@@ -204,7 +125,7 @@ void Matrix4f::Print(const char *str)
 
 
 // Convert axis to quaternion ////////////////////////////////////////////
-glm::fquat AxisAngleToQuaternion(float &angle, Vector3f &axis)
+glm::fquat AxisAngleToQuaternion(float &angle, Vector3t<float> &axis)
 {
 	glm::fquat q;
 	float angle_2 = DEG_TO_RAD(angle) / 2.0f;

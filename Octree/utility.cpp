@@ -347,8 +347,8 @@ void PrintGLMatrix(int _matrix, const char *_str)
 //////////////////////////////////////////////////////////////////////////
 
 void LoadBlenderObject(std::string _filename,
-	std::vector<Vector3f> &_vertices,
-	std::vector<Vector3f> &_normals,
+	std::vector<Vector3t<float>> &_vertices,
+	std::vector<Vector3t<float>> &_normals,
 	int &_n_vertices,
 	int &_n_normals)
 {
@@ -365,7 +365,7 @@ void LoadBlenderObject(std::string _filename,
 
 	std::string line;
 	std::vector<Index3ui> vElements;
-	std::vector<Vector3f> vVertices;
+	std::vector<Vector3t<float>> vVertices;
 	unsigned int nlines = 0;
 
 	while (std::getline(infile, line))
@@ -374,7 +374,7 @@ void LoadBlenderObject(std::string _filename,
 		{
 			// vertex found
 			std::istringstream s(line.substr(2));
-			Vector3f v;
+			Vector3t<float> v;
 			s >> v.x;
 			s >> v.y;
 			s >> v.z;
@@ -406,7 +406,7 @@ void LoadBlenderObject(std::string _filename,
 	// get rid of the element buffer and compute normals
 	for (size_t i = 0; i < vElements.size(); i++)
 	{
-		Vector3f v0, v1, v2;
+		Vector3t<float> v0, v1, v2;
 		v0.x = vVertices[vElements[i].v0 - 1].x;
 		v0.y = vVertices[vElements[i].v0 - 1].y;
 		v0.z = vVertices[vElements[i].v0 - 1].z;
@@ -423,7 +423,7 @@ void LoadBlenderObject(std::string _filename,
 		_vertices.push_back(v1);
 		_vertices.push_back(v0);
 
-		Vector3f n = Cross((v1 - v2), (v0 - v2));
+		Vector3t<float> n = Cross((v1 - v2), (v0 - v2));
 		n.Normalize();
 		_normals.push_back(n);
 		_normals.push_back(n);
@@ -431,7 +431,7 @@ void LoadBlenderObject(std::string _filename,
 
 	}
 
-	// number of vertices (i.e. Vector3f structs)
+	// number of vertices (i.e. Vector3t<float> structs)
 	_n_vertices = (int)_vertices.size();
 	_n_normals = (int)_normals.size();
 

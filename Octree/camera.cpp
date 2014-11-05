@@ -14,10 +14,10 @@ void c_Transform::Identity(int matrix_flag)
 } // end c_Transform::Identity()
 
 //////////////////////////////////////////////////////////////////////////
-Matrix4f *c_Transform::TransformCamMatrix(Vector3f cam_pos,
-										  Vector3f U, 
-										  Vector3f V, 
-										  Vector3f N)
+Matrix4f *c_Transform::TransformCamMatrix(Vector3t<float> cam_pos,
+										  Vector3t<float> U, 
+										  Vector3t<float> V, 
+										  Vector3t<float> N)
 {
 	Matrix4f cam_transl_trans, 
 			 cam_rot_trans, 
@@ -85,9 +85,9 @@ c_Camera::c_Camera(GLuint &_shader_program)
 	// create the transformation object
 	m_pTransform = new c_Transform();
 
-	m_vPos		= Vector3f();
-	m_vTarget	= Vector3f(0.0f, 0.0f, 1.0f);
-	m_vUp		= Vector3f(0.0f, 1.0f, 0.0f);
+	m_vPos		= Vector3t<float>();
+	m_vTarget	= Vector3t<float>(0.0f, 0.0f, 1.0f);
+	m_vUp		= Vector3t<float>(0.0f, 1.0f, 0.0f);
 
 	// Set default move speed / direction
 	m_fMoveSpeed	= 0.1f;
@@ -114,9 +114,9 @@ c_Camera::~c_Camera()
 // c_Camera MEMBER FUNCTIONS /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-void c_Camera::SetCamera(Vector3f &_pos,
-						 Vector3f &_target,
-						 Vector3f &_up)
+void c_Camera::SetCamera(Vector3t<float> &_pos,
+						 Vector3t<float> &_target,
+						 Vector3t<float> &_up)
 {	
 	m_vPos		= _pos;
 	m_vTarget	= _target;
@@ -188,7 +188,7 @@ void c_Camera::Update(void)
 	m_n.Normalize();
 
 	// V: up vector
-	m_v = Vector3f(0.0f, 1.0f, 0.0f);
+	m_v = Vector3t<float>(0.0f, 1.0f, 0.0f);
 
 	// U: right vector = N x V
 	m_u = m_v.Cross(m_n);
@@ -197,7 +197,7 @@ void c_Camera::Update(void)
 	m_v = m_n.Cross(m_u);
 
 	// F: forward vector = V x U
-	m_f = m_u.Cross(Vector3f(0.0f, 1.0f, 0.0f));
+	m_f = m_u.Cross(Vector3t<float>(0.0f, 1.0f, 0.0f));
 
 	// normalize U, V and F
 	m_u.Normalize();

@@ -4,8 +4,8 @@
 // INCLUSIONS ////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-#include "math3d.h"
 #include "utility.h"
+
 
 
 // DEFINITIONS ///////////////////////////////////////////////////////////
@@ -42,9 +42,9 @@ class c_Transform
 {
 public:
 	// Constructor / destructor
-	c_Transform() : m_vScale(Vector3f(0.0f, 0.0f, 0.0f)),
-					m_vWorldPos(Vector3f()),
-					m_vRotate(Vector3f())
+	c_Transform() : m_vScale(Vector3t<float>(0.0f, 0.0f, 0.0f)),
+					m_vWorldPos(Vector3t<float>()),
+					m_vRotate(Vector3t<float>())
 					{};
 
 	// Accessors
@@ -55,7 +55,7 @@ public:
 		m_vScale.z = z;	
 	}
 
-	void Scale(Vector3f &_scale)	{	m_vScale = _scale;	}
+	void Scale(Vector3t<float> &_scale)	{	m_vScale = _scale;	}
 
 	void WorldPos(float x, float y, float z)
 	{
@@ -64,7 +64,7 @@ public:
 		m_vWorldPos.z = z;	
 	}
 
-	void WorldPos(Vector3f &_pos)	{	m_vWorldPos = _pos;	}
+	void WorldPos(Vector3t<float> &_pos)	{	m_vWorldPos = _pos;	}
 
 	void Rotate(float x, float y, float z)
 	{
@@ -73,7 +73,7 @@ public:
 		m_vRotate.z = z;	
 	}
 
-	void Rotate(Vector3f &_rot)		{	m_vRotate = _rot;	}
+	void Rotate(Vector3t<float> &_rot)		{	m_vRotate = _rot;	}
 
 	void SetPerspectiveProj(float fov, float aspect_ratio, float znear, float zfar)
 	{
@@ -86,10 +86,10 @@ public:
 	// Member functions
 	void					Identity				(int matrix_flag);
 
-	Matrix4f				*TransformCamMatrix		(Vector3f cam_pos,
-													 Vector3f U, 
-													 Vector3f V, 
-													 Vector3f N);
+	Matrix4f				*TransformCamMatrix		(Vector3t<float> cam_pos,
+													 Vector3t<float> U, 
+													 Vector3t<float> V, 
+													 Vector3t<float> N);
 
 	Matrix4f				*TransformObjMatrix		();
 
@@ -101,9 +101,9 @@ public:
 
 private:
 	// Member variables
-	Vector3f				m_vScale;
-	Vector3f				m_vWorldPos;
-	Vector3f				m_vRotate;
+	Vector3t<float>				m_vScale;
+	Vector3t<float>				m_vWorldPos;
+	Vector3t<float>				m_vRotate;
 
 	sPersProj				m_persProj;
 
@@ -120,14 +120,14 @@ public:
 	~c_Camera();
 
 	// Accessors
-	Vector3f				&Pos()						{	return (m_vPos);			}
-	Vector3f				&Target()					{	return (m_vTarget);			}
-	Vector3f				&Up()						{	return (m_vUp);				}
+	Vector3t<float>			&Pos()						{	return (m_vPos);			}
+	Vector3t<float>			&Target()					{	return (m_vTarget);			}
+	Vector3t<float>			&Up()						{	return (m_vUp);				}
 	c_Transform				*pTransform()				{	return (m_pTransform);		}
 
-	Vector3f				&U()						{	return (m_u);				}
-	Vector3f				&V()						{	return (m_v);				}
-	Vector3f				&N()						{	return (m_n);				}
+	Vector3t<float>			&U()						{	return (m_u);				}
+	Vector3t<float>			&V()						{	return (m_v);				}
+	Vector3t<float>			&N()						{	return (m_n);				}
 
 	float					MoveSpeed()					{	return (m_fMoveSpeed);		}
 	void					SetMoveSpeed(float _s)		{	m_fMoveSpeed = _s;			}
@@ -147,9 +147,9 @@ public:
 
 
 	// Member functions
-	void					SetCamera					(Vector3f &_pos,
-														 Vector3f &_target,
-														 Vector3f &_up);
+	void					SetCamera					(Vector3t<float> &_pos,
+														 Vector3t<float> &_target,
+														 Vector3t<float> &_up);
 
 	void					MoveCamera					(int _direction);
 
@@ -166,14 +166,14 @@ public:
 
 private:
 	// Member variables
-	Vector3f				m_vPos;
-	Vector3f				m_vTarget;
-	Vector3f				m_vUp;
+	Vector3t<float>				m_vPos;
+	Vector3t<float>				m_vTarget;
+	Vector3t<float>				m_vUp;
 
-	Vector3f				m_u;
-	Vector3f				m_v;
-	Vector3f				m_n;
-	Vector3f				m_f;
+	Vector3t<float>				m_u;
+	Vector3t<float>				m_v;
+	Vector3t<float>				m_n;
+	Vector3t<float>				m_f;
 
 	float					m_fMoveSpeed;
 	float					m_fHeading;
