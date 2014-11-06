@@ -163,7 +163,7 @@ void SetupGeometry()
 
 	// Setup the vertex data for rendering of the nodes
 	std::default_random_engine gen;
-	std::normal_distribution<double> dist(30.0, 5.0);
+	std::normal_distribution<double> dist(20.0, 5.0);
 
 	std::vector<Vector3t<double> > vNodes;
 	vNodes.resize(nNodes);
