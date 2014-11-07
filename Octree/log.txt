@@ -1,4 +1,4 @@
-OctreeSpheres: 2014-11-06 18:38:36
+OctreeSpheres: 2014-11-06 18:45:22
 
 c_GLSLProgram::c_GLSLProgram(): Creating program...
 c_ShaderObject::LoadShader(): Shader 35633 compiled
@@ -30,7 +30,7 @@ c_ShaderObject::CreateShaderProgram(): Program (6) linked
 c_Font::InitializeAtlas(): FreeType initialization		SUCCESS
 c_Font::InitializeAtlas(): Loading ./fonts/FreeSans.ttf		SUCCESS
 ERROR 1280: c_Font::InitializeAtlas(): glGenVertexArrays: invalid enumerant
-c_Font::InitializeAtlas(): Generated a 793x14 text atlas (10.8 kb) in 5.1519 ms
+c_Font::InitializeAtlas(): Generated a 793x14 text atlas (10.8 kb) in 5.1398 ms
 
 LoadBlenderObject(): Loading .OBJ file './OBJ/sphere.obj'.
 Read 6164 lines, reformatting data and computing normals:
@@ -48,5 +48,5 @@ ERROR: c_ShaderObject::Release(): invalid operation
 c_ShaderObject::Release(): program 6; shaders 4, 5		SUCCESS
 
 
-APPLICATION TERMINATED : 2014-11-06 18:39:02
+APPLICATION TERMINATED : 2014-11-06 18:45:38
 

@@ -175,7 +175,7 @@ void SetupGeometry()
 	// OBJECT TESTS //
 
 	pSphere = new c_OGLObject(pProgram, "./OBJ/sphere.obj");
-	//pSphere->SetWorldPos(Vector3t<float>(10.0f, 10.0f, 10.0f));
+	pSphere->SetWorldPos(Vector3t<float>(10.0f, 10.0f, 10.0f));
 	std::vector<Vector3t<float> > vertices = pSphere->GetVertices();
 	nNodes = (int)vertices.size();
 
