@@ -9,6 +9,7 @@
 #include "fonts.h"
 #include "camera.h"
 #include "octree.h"
+#include "object.h"
 
 #include <random>
 
@@ -48,13 +49,16 @@ void SetupGeometry();
 // .shaders
 GLuint main_program;
 c_ShaderObject *pShader;
+c_GLSLProgram *pProgram;
+c_OGLObject *pSphere;
 
+/*
 GLint attributePositions;
 GLint uniformModelMatrix;
 GLint uniformViewMatrix;
 GLint uniformProjectionMatrix;
 GLint uniformColor;
-
+*/
 
 // .font
 c_Font *pFont;

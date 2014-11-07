@@ -11,8 +11,30 @@
 #include "utility.h"
 
 
+
 // DEFINITIONS ///////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
+
+#define GLSL_ATTRIBUTE						0x01
+#define GLSL_UNIFORM						0x02
+
+
+
+// STRUCTURES / TYPE DEFINITIONS /////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+struct GLSL_variable_location
+{
+	std::string sVariableName;
+	GLint iLocation;
+
+	GLSL_variable_location() :
+		sVariableName(""), iLocation(-1) {}
+	GLSL_variable_location(std::string _variable_name, GLint _location) :
+		sVariableName(_variable_name), iLocation(_location) {}
+	
+};
+
 
 
 // CLASSES ///////////////////////////////////////////////////////////////
@@ -54,6 +76,42 @@ private:
 
 };
 
+
+// GLSL Program class ....................................................
+class c_GLSLProgram
+{
+public:
+	// Constructor
+	c_GLSLProgram(std::string _vertex_shader, std::string _fragment_shader);
+	~c_GLSLProgram();
+
+	// Accessors / Member functions
+	GLuint ProgramID()											{	return (m_programID);		}
+	std::map<std::string, GLSL_variable_location> Attributes()	{	return (m_mapAttributes);	}
+	std::map<std::string, GLSL_variable_location> Uniforms()	{	return (m_mapUniforms);		}
+
+	void AddVariable(int _type, std::string _name, std::string _variable);
+	
+	GLSL_variable_location GetGLSLVariable(int _type, std::string _name);
+	GLint GetLocation(int _type, std::string _name);
+
+	void FinalizeProgram();
+
+
+private:
+	GLuint m_programID;
+
+	c_ShaderObject *m_pShader;
+
+	// Mapping of attributes and uniforms separately. The std::string <key> 
+	// corresponds to the name of the variable, e.g. 'attributePosition' or
+	// 'normals'. The value of the corresponding key contains both the name
+	// of the GLSL variable, e.g. 'a_vPosition' and the location of that variable
+	// as located using glGetAttribLocation() and glGetUniformLocation().
+	std::map<std::string, GLSL_variable_location> m_mapAttributes;
+	std::map<std::string, GLSL_variable_location> m_mapUniforms;
+
+};
 
 
 

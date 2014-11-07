@@ -26,7 +26,7 @@ bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 	if (/*!_root->GetAABB().ContainsPoint(_v) || */_root->GetLevel() > OCTREE_MAX_DEPTH)
 		return (false);
 
-	Logw("insert at level %d\n", _root->GetLevel());
+	//Logw("insert at level %d\n", _root->GetLevel());
 
 	if (_root->ContainsVertex() && _root->GetChild(0) != NULL)
 	{
@@ -35,7 +35,7 @@ bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 		int index = _root->GetChildIndex(_root, _v);
 		_root->Insert(_root->GetChild(index), _v);
 
-		Logw("\ttried to insert into node at level %d, but already contained vertices below.\tInserted into child %d\n", _root->GetLevel(), index);
+		//Logw("\ttried to insert into node at level %d, but already contained vertices below.\tInserted into child %d\n", _root->GetLevel(), index);
 
 		_root->SetContainsVertex(true);
 
@@ -47,7 +47,7 @@ bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 	{
 		_root->Split(_root);
 
-		Logw("\tperformed a split due to % verts in this node (level %d). Inserting vertices into children\n", _root->GetLevel());
+		//Logw("\tperformed a split due to % verts in this node (level %d). Inserting vertices into children\n", _root->GetLevel());
 
 		// add the incoming vertex
 		_root->AddVector(_v);
@@ -62,7 +62,7 @@ bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 			_root->Insert(_root->GetChild(index), vertices[i]);
 		}
 		
-		Logw("\t(%d verts in here that were inserted)\n", vertices.size());
+		//Logw("\t(%d verts in here that were inserted)\n", vertices.size());
 		_root->ClearVertices();
 
 		// this node (or its children) contains vertices
@@ -72,7 +72,7 @@ bool c_Octree::Insert(c_Octree *_root, Vector3t<double> _v)
 	}
 	else
 	{
-		Logw("this is the end, at level %d. %d verts at this level\n", _root->GetLevel(), _root->GetVertices().size());
+		//Logw("this is the end, at level %d. %d verts at this level\n", _root->GetLevel(), _root->GetVertices().size());
 		// ended up here if
 		//	1. we reached max depth
 		//	2. there is still room for more vertices in this node
