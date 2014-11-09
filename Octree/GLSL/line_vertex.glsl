@@ -2,7 +2,6 @@
 
 in vec3 a_vPositions;
 
-
 uniform mat4 u_mModel;
 uniform mat4 u_mView;
 uniform mat4 u_mProjection;

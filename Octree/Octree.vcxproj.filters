@@ -15,20 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="GLSL\font_fragment.glsl">
-      <Filter>GLSL</Filter>
-    </None>
-    <None Include="GLSL\font_vertex.glsl">
-      <Filter>GLSL</Filter>
-    </None>
-    <None Include="GLSL\main_fragment.glsl">
-      <Filter>GLSL</Filter>
-    </None>
-    <None Include="GLSL\main_vertex.glsl">
-      <Filter>GLSL</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -82,5 +68,25 @@
     <ClCompile Include="object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GLSL\font_fragment.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="GLSL\font_vertex.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="GLSL\geometry_fragment.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="GLSL\geometry_vertex.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="GLSL\line_fragment.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="GLSL\line_vertex.glsl">
+      <Filter>GLSL</Filter>
+    </None>
   </ItemGroup>
 </Project>

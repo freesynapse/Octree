@@ -41,10 +41,10 @@ void KeyDown(unsigned char key, int x, int y)
 {
 	bKeystate[key] = true;
 
-	if (key >= 65 || key <= 90)
+	if (key >= 65 && key <= 90)
 		bKeystate[key + 32] = true;
 
-	else if (key == 9)
+	if (key == 9)
 	{
 		if (!bWireframeState)
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -135,11 +135,14 @@ void KeyboardAsync()
 // Release ...............................................................
 void Release()
 {
-	if (pShader)
-	{
-		pShader->Release();
-		delete pShader;
-	}
+	if (pProgramLines)
+		delete pProgramLines;
+
+	if (pProgramGeometry)
+		delete pProgramGeometry;
+
+	if (pSphere)
+		delete pSphere;
 
 	if (pFont)
 		delete pFont;
@@ -166,25 +169,37 @@ void SetupGeometry()
 	std::normal_distribution<double> dist(20.0, 5.0);
 
 	std::vector<Vector3t<double> > vNodes;
-	vNodes.resize(nNodes);
+	vNodes.resize(nVertices);
 	srand((unsigned int)time(NULL));
-	for (int i = 0; i < nNodes; i++)
+	for (int i = 0; i < nVertices; i++)
 		vNodes[i] = Vector3t<double>(dist(gen), dist(gen), dist(gen));
 
-	
+
+	// OBJECT TESTS //
+
+	pSphere = new c_OGLObject(pProgramGeometry, "./OBJ/sphere2.obj");
+	//pSphere->SetWorldPos(Vector3t<float>(10.0f, 10.0f, 10.0f));
+	std::vector<Vector3t<float> > vertices = pSphere->GetVertices();
+	nVertices = (int)vertices.size();
+
+	// END: OBJECT TESTS //
+
+
 	// OCTREE TESTS //
 
 	pTree = new c_Octree(AABB3(Vector3t<double>(-50.0, -50.0, -50.0), Vector3t<double>(50.0, 50.0, 50.0)));
-	for (int i = 0; i < nNodes; i++)
-		pTree->Insert(pTree, vNodes[i]);
+	for (int i = 0; i < nVertices; i++)
+	{
+		Vector3t<double> v = Vector3t<double>((double)vertices[i].x, (double)vertices[i].y, (double)vertices[i].z);
+		pTree->Insert(pTree, v);
+	}
 
 	std::vector<Line3> vLines;
 	pTree->LinesAABB(pTree, &vLines);
 	nLines = (int)vLines.size();
 
 	Logw("\n");
-	pTree->Print(pTree);
-
+	//pTree->Print(pTree);
 	nTreeLevels = pTree->TreeDepth(pTree);
 
 
@@ -192,6 +207,7 @@ void SetupGeometry()
 
 
 
+	/*
 	// Setup the vertex array object for rendering the nodes
 	GLenum res = GL_NO_ERROR;
 	glGenVertexArrays(1, &vaoNodes);
@@ -210,18 +226,18 @@ void SetupGeometry()
 		Logw("ERROR %d: glGenBuffers vboNodePositions: %s\n", res, gluErrorString(res));
 
 	glBindBuffer(GL_ARRAY_BUFFER, vboNodePositions);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vector3t<double>) * nNodes, &vNodes[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vector3t<double>) * nVertices, &vNodes[0], GL_STATIC_DRAW);
 	
-	glEnableVertexAttribArray(attributePositions);
-	glVertexAttribPointer(attributePositions, 3, GL_DOUBLE, GL_FALSE, 0, BUFFER_OFFSET(0));
+	glEnableVertexAttribArray(pProgramLines->GetLocation(GLSL_ATTRIBUTE, "attributePosition"));
+	glVertexAttribPointer(pProgramLines->GetLocation(GLSL_ATTRIBUTE, "attributePosition"), 3, GL_DOUBLE, GL_FALSE, 0, BUFFER_OFFSET(0));
 
 	// Unbind the vertex array object
-	glDisableVertexAttribArray(attributePositions);
+	glDisableVertexAttribArray(pProgramLines->GetLocation(GLSL_ATTRIBUTE, "attributePosition"));
 	glBindVertexArray(0);
-
+	*/
 
 	// Setup the vertex array obejct for rendering the lines
-	res = GL_NO_ERROR;
+	GLenum res = GL_NO_ERROR;
 	glGenVertexArrays(1, &vaoLines);
 	res = glGetError();
 	if (res != GL_NO_ERROR)
@@ -240,11 +256,11 @@ void SetupGeometry()
 	glBindBuffer(GL_ARRAY_BUFFER, vboLines);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Line3) * nLines, &vLines[0], GL_STATIC_DRAW);
 
-	glEnableVertexAttribArray(attributePositions);
-	glVertexAttribPointer(attributePositions, 3, GL_DOUBLE, GL_FALSE, 0, BUFFER_OFFSET(0));
+	glEnableVertexAttribArray(pProgramLines->GetLocation(GLSL_ATTRIBUTE, "attributePosition"));
+	glVertexAttribPointer(pProgramLines->GetLocation(GLSL_ATTRIBUTE, "attributePosition"), 3, GL_DOUBLE, GL_FALSE, 0, BUFFER_OFFSET(0));
 
 	// Unbind the vertex array object
-	glDisableVertexAttribArray(attributePositions);
+	glDisableVertexAttribArray(pProgramLines->GetLocation(GLSL_ATTRIBUTE, "attributePosition"));
 	glBindVertexArray(0);
 
 	
@@ -279,55 +295,73 @@ void Update()
 // Render ................................................................
 void Render()
 {
+	static GLint line_attributePosition = pProgramLines->GetLocation(GLSL_ATTRIBUTE, "attributePosition");
+	static GLint line_uniformModelMatrix = pProgramLines->GetLocation(GLSL_UNIFORM, "uniformModelMatrix");
+	static GLint line_uniformViewMatrix = pProgramLines->GetLocation(GLSL_UNIFORM, "uniformViewMatrix");
+	static GLint line_uniformProjectionMatrix = pProgramLines->GetLocation(GLSL_UNIFORM, "uniformProjectionMatrix");
+	static GLint line_uniformColor = pProgramLines->GetLocation(GLSL_UNIFORM, "uniformColor");
+
+	static GLint geo_uniformModelMatrix = pProgramLines->GetLocation(GLSL_UNIFORM, "uniformModelMatrix");
+	static GLint geo_uniformViewMatrix = pProgramLines->GetLocation(GLSL_UNIFORM, "uniformViewMatrix");
+	static GLint geo_uniformProjectionMatrix = pProgramLines->GetLocation(GLSL_UNIFORM, "uniformProjectionMatrix");
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// 3D RENDERING ////////////////////////////////////////////
 
-	// use main rendering program
-	glUseProgram(main_program);
-
-	// set the camera
-	//pCamera->SetHeading(270.0f);
-	//pCamera->SetElevation(90.0f);
+	// Update the position, elevation and heading of the camera
 	pCamera->Update();
 	
 
-	// SHADER UNIFORMS //
+	// LINE SHADER //
+	//
+	glUseProgram(pProgramLines->ProgramID());
+
+
+	// LINE SHADER UNIFORMS //
 
 	// Model matrix
 	mModelMatrix.Identity();
 	qRotation = AxisAngleToQuaternion(fTheta, vRotationAxis);
 	mModelMatrix.QuaternionRotation(qRotation);
-	glUniformMatrix4fv(uniformModelMatrix, 1, GL_TRUE, (const GLfloat *)&mModelMatrix);
+	glUniformMatrix4fv(line_uniformModelMatrix, 1, GL_TRUE, (const GLfloat *)&mModelMatrix);
 
 	// View matrix
 	mViewMatrix = pCamera->ViewMatrix();
-	glUniformMatrix4fv(uniformViewMatrix, 1, GL_TRUE, (const GLfloat *)&mViewMatrix);
+	glUniformMatrix4fv(line_uniformViewMatrix, 1, GL_TRUE, (const GLfloat *)&mViewMatrix);
 
 	// Projection matrix
 	mProjectionMatrix = pCamera->ProjectionMatrix();
-	glUniformMatrix4fv(uniformProjectionMatrix, 1, GL_TRUE, (const GLfloat *)&mProjectionMatrix);
-	
-	// Set color of nodes
-	glUniform3fv(uniformColor, 1, (const GLfloat *)&rgbNodeColor);
+	glUniformMatrix4fv(line_uniformProjectionMatrix, 1, GL_TRUE, (const GLfloat *)&mProjectionMatrix);
+
+
+	// RENDER LINES //
+
+	// Render AABB lines
+	glUniform3fv(line_uniformColor, 1, (const GLfloat *)&Vector3t<float>(1.0f, 1.0f, 0.5f));
+
+	glBindVertexArray(vaoLines);
+	glEnableVertexAttribArray(line_attributePosition);
+
+	glDrawArrays(GL_LINES, 0, nLines * 2);
+
+
+
+	// GEOMETRY SHADER //
+	//
+	glUseProgram(pProgramGeometry->ProgramID());
+
+
+	// GEOMETRY SHADER UNIFORMS // 
+
+	glUniformMatrix4fv(geo_uniformModelMatrix, 1, GL_TRUE, (const GLfloat *)&mModelMatrix);
+	glUniformMatrix4fv(geo_uniformViewMatrix, 1, GL_TRUE, (const GLfloat *)&mViewMatrix);
+	glUniformMatrix4fv(geo_uniformProjectionMatrix, 1, GL_TRUE, (const GLfloat *)&mProjectionMatrix);
 
 
 	// RENDER GEOMETRY //
 
-	// Render the nodes
-	glBindVertexArray(vaoNodes);
-	glEnableVertexAttribArray(attributePositions);
-
-	glPointSize(2.0);
-	glDrawArrays(GL_POINTS, 0, nNodes);
-
-	// Render AABB lines
-	glUniform3fv(uniformColor, 1, (const GLfloat *)&Vector3t<float>(1.0f, 1.0f, 0.0f));
-
-	glBindVertexArray(vaoLines);
-	glEnableVertexAttribArray(attributePositions);
-
-	glDrawArrays(GL_LINES, 0, nLines * 2);
+	pSphere->Render();
 	
 	
 	// 2D RENDERING ////////////////////////////////////////////
@@ -346,11 +380,12 @@ void Render()
 	pFont->RenderString_ss(2, y += font_height, "FPS: %.2f", dFPS);
 
 	Vector3t<float> p = pCamera->Pos();
-	pFont->RenderString_ss(2, y += font_height, "Camera:");
+	pFont->RenderString_ss(2, y += font_height * 2, "Camera:");
 	pFont->RenderString_ss(2, y += font_height, "pos[%.1f  %.1f  %.1f]", p.x, p.y, p.z);
 	pFont->RenderString_ss(2, y += font_height, "heading: %.1f    elevation: %.1f", pCamera->Heading(), pCamera->Elevation());
 
-	pFont->RenderString_ss(2, y += font_height * 2, "points: %d", nNodes);
+	pFont->RenderString_ss(2, y += font_height * 2, "wireframe [%s]", bWireframeState ? "ON" : "OFF");
+	pFont->RenderString_ss(2, y += font_height * 2, "vertices: %d", nVertices);
 	pFont->RenderString_ss(2, y += font_height, "lines: %d", nLines);
 	pFont->RenderString_ss(2, y += font_height, "rotation angle: %.0f deg", fTheta);
 
@@ -412,7 +447,8 @@ int main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 
-	// openGL settings
+	// OpenGL settings
+	//
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glFrontFace(GL_CCW);
 	glCullFace(GL_BACK);
@@ -431,39 +467,52 @@ int main(int argc, char *argv[])
 	glutSetCursor(GLUT_CURSOR_NONE);
 	//glutSetCursor(GLUT_CURSOR_CROSSHAIR);
 
-	// log it!
+
+	// Start the log file
+	//
 	OpenLogFile("./log.txt");
 
-	// Load shaders
-	pShader = new c_ShaderObject();
-	main_program = pShader->CreateShaderProgram("./GLSL/main_vertex.glsl",
-												"./GLSL/main_fragment.glsl");
 
-	glUseProgram(main_program);
+	// Compile GLSL program for rendering lines
+	//
+	pProgramLines = new c_GLSLProgram("LineShader",
+									  "./GLSL/line_vertex.glsl",
+									  "./GLSL/line_fragment.glsl");
 	
-	attributePositions		= glGetAttribLocation(main_program, "a_vPositions");
-	uniformModelMatrix		= glGetUniformLocation(main_program, "u_mModel");
-	uniformViewMatrix		= glGetUniformLocation(main_program, "u_mView");
-	uniformProjectionMatrix = glGetUniformLocation(main_program, "u_mProjection");
-	uniformColor			= glGetUniformLocation(main_program, "u_vRenderColor");
+	glUseProgram(pProgramLines->ProgramID());
+	
+	pProgramLines->AddVariable(GLSL_ATTRIBUTE, "attributePosition", "a_vPositions");
+	pProgramLines->AddVariable(GLSL_UNIFORM, "uniformModelMatrix", "u_mModel");
+	pProgramLines->AddVariable(GLSL_UNIFORM, "uniformViewMatrix", "u_mView");
+	pProgramLines->AddVariable(GLSL_UNIFORM, "uniformProjectionMatrix", "u_mProjection");
+	pProgramLines->AddVariable(GLSL_UNIFORM, "uniformColor", "u_vRenderColor");
+	pProgramLines->FinalizeProgram();
 
-	if (attributePositions		== -1 ||
-		uniformModelMatrix		== -1 ||
-		uniformViewMatrix		== -1 ||
-		uniformProjectionMatrix == -1 ||
-		uniformColor			== -1)
-	{
-		Logw("ERROR: Could not bind attribute/uniform locations:\n");
-		Logw("\tattributePositions = %d\n\tuniformModelMatrix = %d\n\tuniformViewMatrix = %d\n\tuniformProjectionMatrix = %d\n\tuniformColor = %d\n",
-			attributePositions, uniformModelMatrix, uniformViewMatrix, uniformProjectionMatrix, uniformColor);
-		return (EXIT_FAILURE);
-	}
 
-	// initialize font atlas 
+	// Compile GLSL program for rendering the geometry
+	//
+	pProgramGeometry = new c_GLSLProgram("GeometryShader",
+										 "./GLSL/geometry_vertex.glsl",
+									 	 "./GLSL/geometry_fragment.glsl");
+
+	glUseProgram(pProgramGeometry->ProgramID());
+
+	pProgramGeometry->AddVariable(GLSL_ATTRIBUTE, "attributePosition", "a_vPositions");
+	pProgramGeometry->AddVariable(GLSL_ATTRIBUTE, "attributeNormal", "a_vNormals");
+	pProgramGeometry->AddVariable(GLSL_UNIFORM, "uniformModelMatrix", "u_mModel");
+	pProgramGeometry->AddVariable(GLSL_UNIFORM, "uniformViewMatrix", "u_mView");
+	pProgramGeometry->AddVariable(GLSL_UNIFORM, "uniformProjectionMatrix", "u_mProjection");
+	pProgramGeometry->FinalizeProgram();
+
+
+	// Initialize font atlas
+	//
 	pFont = new c_Font("./fonts/FreeSans.ttf", 14, FONT_CREATE_SHADERS);
 	pFont->SetColor(&rgba4f(1.0f, 1.0f, 1.0f, 1.0f));
 
-	// initialise camera
+
+	// Initialize camera
+	//
 	pCamera = new c_Camera(main_program);
 	pCamera->PerspectiveProjection(FOV,
 								   (float)vWindowDimensions.x / (float)vWindowDimensions.y,
@@ -482,15 +531,22 @@ int main(int argc, char *argv[])
 	pCamera->Update();
 
 	
-	// setup geometry
+	// Setup geometry
+	//
 	SetupGeometry();
 
+
+	// Fullscreen?
+	//
 #if APP_FULLSCREEN == 1
 	glutFullScreen();
 #endif
 
+
 	// Let's start the show!
+	//
 	glutMainLoop();
+
 
 	return (EXIT_SUCCESS);
 }

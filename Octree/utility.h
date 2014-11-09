@@ -132,13 +132,6 @@ double				ProcessCPU				();
 // Debugging functions ...................................................
 void				PrintGLMatrix			(int _matrix, const char *_str);
 
-// Load Blender OBJ files ................................................
-void				LoadBlenderObject		(std::string _filename,
-											 std::vector<Vector3t<float> > &_vertices,
-											 std::vector<Vector3t<float> > &_normals,
-											 int &_n_vertices,
-											 int &_n_normals);
-
 
 
 // GLOBAL VARIABLES //////////////////////////////////////////////////////

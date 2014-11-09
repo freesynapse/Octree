@@ -80,12 +80,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="GLSL\font_fragment.glsl" />
-    <None Include="GLSL\font_vertex.glsl" />
-    <None Include="GLSL\main_fragment.glsl" />
-    <None Include="GLSL\main_vertex.glsl" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="fonts.h" />
     <ClInclude Include="mainGlobals.h" />
@@ -105,6 +99,14 @@
     <ClCompile Include="octree.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="utility.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GLSL\font_fragment.glsl" />
+    <None Include="GLSL\font_vertex.glsl" />
+    <None Include="GLSL\geometry_fragment.glsl" />
+    <None Include="GLSL\geometry_vertex.glsl" />
+    <None Include="GLSL\line_fragment.glsl" />
+    <None Include="GLSL\line_vertex.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
