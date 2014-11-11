@@ -1,4 +1,4 @@
-OctreeSpheres: 2014-11-09 09:59:21
+OctreeSpheres: 2014-11-10 14:05:12
 
 c_GLSLProgram::c_GLSLProgram(): Creating program LineShader...
 c_ShaderObject::LoadShader(): Shader 35633 compiled
@@ -24,52 +24,29 @@ c_GLSLProgram::c_GLSLProgram(): Creating program GeometryShader...
 c_ShaderObject::LoadShader(): Shader 35633 compiled
 c_ShaderObject::LoadShader(): Shader 35632 compiled
 c_ShaderObject::CreateShaderProgram(): Created shader program with id 6
-c_ShaderObject::CreateShaderProgram(): Program (6) linked
+ERROR: c_ShaderObject::CreateShaderProgram(): Could not link program (6)
 	./GLSL/geometry_vertex.glsl
 	./GLSL/geometry_fragment.glsl
 
+ERROR:
+Vertex info
+-----------
+(0) : error C5145: must write to gl_Position
+
+
 c_GLSLProgram::FinalizeProgram(): GeometryShader
 GLSL_ATTRIBUTE
-	attributeNormal = a_vNormals (1)
-	attributePosition = a_vPositions (0)
+	attributeNormal = a_vNormals (-1)
+	attributePosition = a_vPositions (-1)
 
 GLSL_UNIFORM
-	uniformModelMatrix = u_mModel (0)
-	uniformProjectionMatrix = u_mProjection (1)
-	uniformViewMatrix = u_mView (2)
+	uniformModelMatrix = u_mModel (-1)
+	uniformProjectionMatrix = u_mProjection (-1)
+	uniformViewMatrix = u_mView (-1)
 
-c_GLSLProgram::FinalizeProgram(): GeometryShader: attribute/uniform locations found.
-
-c_Font::c_Font: Compiling new shaders.
-c_ShaderObject::LoadShader(): Shader 35633 compiled
-c_ShaderObject::LoadShader(): Shader 35632 compiled
-c_ShaderObject::CreateShaderProgram(): Created shader program with id 9
-c_ShaderObject::CreateShaderProgram(): Program (9) linked
-	./GLSL/font_vertex.glsl
-	./GLSL/font_fragment.glsl
-
-c_Font::InitializeAtlas(): FreeType initialization		SUCCESS
-c_Font::InitializeAtlas(): Loading ./fonts/FreeSans.ttf		SUCCESS
-ERROR 1280: c_Font::InitializeAtlas(): glGenVertexArrays: invalid enumerant
-c_Font::InitializeAtlas(): Generated a 769x15 text atlas (11.3 kb) in 40.2742 ms
-
-LoadBlenderObject(): Loading .OBJ file './OBJ/sphere2.obj'.
-Read 725 lines, reformatting data and computing normals:
-	number of vertices	1440
-	number of normals	1440
-
-c_OGLObject::InitializeObject(): ERROR 1281: glGenVertexArrays m_vaoObject: invalid value
-attributeNormal - a_vNormals : 1
-attributePosition - a_vPositions : 0
+c_GLSLProgram::FinalizeProgram(): GeometryShader: Errors encoutered in attribute/uniform locations. Exit.
 
 
 
---- CALL: MAIN::KeyboardAsync(): <ESC> recieved, leaving glutMainLoop().
-
-c_ShaderObject::Release(): program 3; shaders 1, 2		SUCCESS
-c_ShaderObject::Release(): program 6; shaders 4, 5		SUCCESS
-c_ShaderObject::Release(): program 9; shaders 7, 8		SUCCESS
-
-
-APPLICATION TERMINATED : 2014-11-09 09:59:43
+APPLICATION TERMINATED : 2014-11-10 14:05:12
 

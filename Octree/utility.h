@@ -123,7 +123,7 @@ double				WaitCounter				(double _time);
 
 // WinAPI necessities ....................................................
 TCHAR				*CStrToTCHAR			(char *_str);
-Vector2t<int>		WindowsDimensions		();
+Vector2t<int>		WindowDimensions		();
 __int64				FileSize				(const char *_filename);
 process_info		ProcessInfo				();
 void				InitProcessCPU			();

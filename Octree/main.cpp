@@ -415,7 +415,7 @@ int main(int argc, char *argv[])
 	glutInitContextProfile(GLUT_CORE_PROFILE);
 
 	// set window dimensions and/or fullscreen
-	vWindowDimensions = WindowsDimensions();
+	vWindowDimensions = WindowDimensions();
 #if APP_FULLSCREEN == 1
 	glutInitWindowSize(vWindowDimensions.x, vWindowDimensions.y);
 #else

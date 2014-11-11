@@ -210,7 +210,7 @@ TCHAR *CStrToTCHAR(char *_str)
 } // end CharToTCHAR()
 
 //////////////////////////////////////////////////////////////////////////
-Vector2t<int> WindowsDimensions()
+Vector2t<int> WindowDimensions()
 {
 	RECT rDesktop;
 	const HWND hDesktop = GetDesktopWindow();
